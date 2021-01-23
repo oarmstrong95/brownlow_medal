@@ -22,8 +22,8 @@ ranger_recipe <-
   # turn the game outcome into a dummy variables
   step_dummy(game_outcome) %>%
   # down sample
-  step_nearmiss(brownlow_votes, under_ratio = 1.2435, seed = 345) %>%
-  # upsample
+  step_nearmiss(brownlow_votes, under_ratio = 1.1, seed = 345) %>%
+  # up sample
   step_bsmote(brownlow_votes, over_ratio = 1, seed = 456) %>%
   # remove any correlated variables
   step_corr(all_predictors(), -all_nominal())
