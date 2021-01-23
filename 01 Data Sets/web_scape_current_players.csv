@@ -1,0 +1,770 @@
+"","player_name","web_scraped_team","dob","height"
+"1","Sam Berry","Adelaide Crows",2002-02-12,181
+"2","James Borlase","Adelaide Crows",2002-07-18,192
+"3","Luke Brown","Adelaide Crows",1992-09-22,181
+"4","Jordon Butts","Adelaide Crows",1999-12-31,198
+"5","Brayden Cook","Adelaide Crows",2002-07-18,189
+"6","Matt Crouch","Adelaide Crows",1995-04-21,182
+"7","Ben Davis","Adelaide Crows",1997-05-19,187
+"8","Tom Doedee","Adelaide Crows",1997-03-01,188
+"9","Darcy Fogarty","Adelaide Crows",1999-09-25,193
+"10","Billy Frampton","Adelaide Crows",1996-11-20,200
+"11","Bryce Gibbs","Adelaide Crows",1989-03-15,188
+"12","Lachlan Gollant","Adelaide Crows",2001-09-12,191
+"13","Will Hamill","Adelaide Crows",2000-11-17,186
+"14","Jackson Hately","Adelaide Crows",2000-10-21,190
+"15","Elliott Himmelberg","Adelaide Crows",1998-06-04,198
+"16","Mitchell Hinge","Adelaide Crows",1998-06-26,190
+"17","Chayce Jones","Adelaide Crows",2000-01-14,180
+"18","Ben Keays","Adelaide Crows",1997-02-23,185
+"19","Jake Kelly","Adelaide Crows",1995-01-21,190
+"20","Rory Laird","Adelaide Crows",1993-12-29,177
+"21","Tom Lynch","Adelaide Crows",1990-09-15,193
+"22","David MacKay","Adelaide Crows",1988-07-25,181
+"23","Shane McAdam","Adelaide Crows",1995-05-28,181
+"24","Fischer McAsey","Adelaide Crows",2001-03-08,197
+"25","Ned McHenry","Adelaide Crows",2000-07-13,179
+"26","Andrew McPherson","Adelaide Crows",1999-06-20,186
+"27","Wayne Milera","Adelaide Crows",1997-09-14,184
+"28","Lachlan Murphy","Adelaide Crows",1998-12-04,176
+"29","Tariek Newchurch","Adelaide Crows",2002-07-21,182
+"30","Reilly O'Brien","Adelaide Crows",1995-08-20,202
+"31","Ronin O'Connor","Adelaide Crows",2001-02-01,191
+"32","Luke Pedlar","Adelaide Crows",2002-05-17,183
+"33","James Rowe","Adelaide Crows",1999-09-17,173
+"34","Harry Schoenberg","Adelaide Crows",2001-02-21,180
+"35","Paul Seedsman","Adelaide Crows",1992-01-22,190
+"36","Lachlan Sholl","Adelaide Crows",2000-03-07,185
+"37","Rory Sloane","Adelaide Crows",1990-03-17,182
+"38","Brodie Smith","Adelaide Crows",1992-01-14,189
+"39","Tyson Stengle","Adelaide Crows",1998-10-19,172
+"40","Kieran Strachan","Adelaide Crows",1995-10-05,204
+"41","Daniel Talia","Adelaide Crows",1991-10-02,197
+"42","Riley Thilthorpe","Adelaide Crows",2002-07-07,201
+"43","Taylor Walker","Adelaide Crows",1990-04-25,193
+"44","Josh Worrell","Adelaide Crows",2001-04-11,195
+"45","Marcus Adams","Brisbane Lions",1993-06-30,192
+"46","Chee, Callum Ah","Brisbane Lions",1997-10-09,182
+"47","Harris Andrews","Brisbane Lions",1996-12-11,201
+"48","Noah Answerth","Brisbane Lions",1999-08-06,182
+"49","Zac Bailey","Brisbane Lions",1999-09-23,182
+"50","Connor Ballenden","Brisbane Lions",1999-03-29,200
+"51","Jarrod Berry","Brisbane Lions",1998-02-05,193
+"52","Thomas Berry","Brisbane Lions",2000-05-01,185
+"53","Grant Birchall","Brisbane Lions",1988-01-28,193
+"54","Charlie Cameron","Brisbane Lions",1994-07-05,181
+"55","Nakia Cockatoo","Brisbane Lions",1996-10-23,186
+"56","Blake Coleman","Brisbane Lions",2002-08-06,180
+"57","Keidean Coleman","Brisbane Lions",2000-03-31,183
+"58","Joe Daniher","Brisbane Lions",1994-03-04,200
+"59","Cameron Ellis-Yolmen","Brisbane Lions",1993-01-28,190
+"60","Tom Fullarton","Brisbane Lions",1999-02-23,199
+"61","Darcy Gardiner","Brisbane Lions",1995-09-22,193
+"62","Eric Hipwood","Brisbane Lions",1997-09-13,204
+"63","Tom Joyce","Brisbane Lions",2000-03-07,180
+"64","Ryan Lester","Brisbane Lions",1992-08-26,192
+"65","Jarryd Lyons","Brisbane Lions",1992-07-22,184
+"66","James Madden","Brisbane Lions",1999-11-15,186
+"67","Rhys Mathieson","Brisbane Lions",1997-01-10,188
+"68","Lincoln McCarthy","Brisbane Lions",1993-10-22,176
+"69","Hugh McCluggage","Brisbane Lions",1998-03-03,187
+"70","Connor McFadyen","Brisbane Lions",2000-12-04,190
+"71","Oscar McInerney","Brisbane Lions",1994-07-10,205
+"72","Daniel McStay","Brisbane Lions",1995-06-24,195
+"73","Carter Michael","Brisbane Lions",2002-05-22,188
+"74","Lachie Neale","Brisbane Lions",1993-05-24,177
+"75","Jack Payne","Brisbane Lions",1999-10-15,197
+"76","Jaxon Prior","Brisbane Lions",2001-06-04,188
+"77","Cameron Rayner","Brisbane Lions",1999-10-21,187
+"78","Daniel Rich","Brisbane Lions",1990-06-07,183
+"79","Deven Robertson","Brisbane Lions",2001-06-30,182
+"80","Mitch Robinson","Brisbane Lions",1989-06-07,184
+"81","Harry Sharp","Brisbane Lions",2002-12-17,183
+"82","Archie Smith","Brisbane Lions",1995-07-19,203
+"83","Brock Smith","Brisbane Lions",2001-03-13,188
+"84","Ely Smith","Brisbane Lions",2000-09-13,187
+"85","Henry Smith","Brisbane Lions",2002-09-24,204
+"86","Brandon Starcevich","Brisbane Lions",1999-07-24,188
+"87","Deividas Uosis","Brisbane Lions",2000-06-28,183
+"88","Dayne Zorko","Brisbane Lions",1989-02-09,175
+"89","Eddie Betts","Carlton Blues",1986-11-26,174
+"90","Jack Carroll","Carlton Blues",2002-12-20,187
+"91","Levi Casboult","Carlton Blues",1990-03-15,201
+"92","Matt Cottrell","Carlton Blues",2000-02-29,181
+"93","Patrick Cripps","Carlton Blues",1995-03-18,195
+"94","David Cuningham","Carlton Blues",1997-03-30,185
+"95","Charlie Curnow","Carlton Blues",1997-02-03,192
+"96","Edward Curnow","Carlton Blues",1989-11-07,180
+"97","Koning, Tom De","Carlton Blues",1999-07-16,203
+"98","Sam Docherty","Carlton Blues",1993-10-17,187
+"99","Paddy Dow","Carlton Blues",1999-10-16,187
+"100","Corey Durdin","Carlton Blues",2002-04-14,173
+"101","Zac Fisher","Carlton Blues",1998-06-15,177
+"102","Lachlan Fogarty","Carlton Blues",1999-04-01,180
+"103","Michael Gibbons","Carlton Blues",1995-05-15,175
+"104","Josh Honey","Carlton Blues",2001-10-17,184
+"105","Liam Jones","Carlton Blues",1991-02-24,199
+"106","Brodie Kemp","Carlton Blues",2001-05-01,192
+"107","Caleb Marchbank","Carlton Blues",1996-12-07,193
+"108","Jack Martin","Carlton Blues",1995-01-29,186
+"109","Mitch McGovern","Carlton Blues",1994-10-11,191
+"110","Harry McKay","Carlton Blues",1997-12-24,204
+"111","Marc Murphy","Carlton Blues",1987-07-19,180
+"112","Nic Newman","Carlton Blues",1993-01-15,187
+"113","Jack Newnes","Carlton Blues",1993-02-24,186
+"114","Lochie O'Brien","Carlton Blues",1999-09-18,185
+"115","Matt Owies","Carlton Blues",1997-03-19,179
+"116","Luke Parks","Carlton Blues",NA,NA
+"117","Sam Petrevski-Seton","Carlton Blues",1998-02-19,182
+"118","Sam Philp","Carlton Blues",2001-08-04,185
+"119","Marc Pittonet","Carlton Blues",1996-06-03,202
+"120","Lachlan Plowman","Carlton Blues",1994-09-11,193
+"121","Sam Ramsay","Carlton Blues",2001-03-21,180
+"122","Adam Saad","Carlton Blues",1994-07-23,178
+"123","Will Setterfield","Carlton Blues",1998-02-05,192
+"124","Jack Silvagni","Carlton Blues",1997-12-17,194
+"125","Liam Stocker","Carlton Blues",2000-01-23,184
+"126","Sam Walsh","Carlton Blues",2000-07-02,184
+"127","Jacob Weitering","Carlton Blues",1997-11-23,196
+"128","Zachary Williams","Carlton Blues",1994-09-20,185
+"129","Tom Williamson","Carlton Blues",1998-12-12,190
+"130","Taylor Adams","Collingwood Magpies",1993-09-20,181
+"131","Trent Bianco","Collingwood Magpies",2001-01-20,178
+"132","Callum Brown","Collingwood Magpies",1998-04-27,178
+"133","Tyler Brown","Collingwood Magpies",1999-12-09,188
+"134","Darcy Cameron","Collingwood Magpies",1995-07-18,205
+"135","Isaac Chugg","Collingwood Magpies",NA,NA
+"136","Mason Cox","Collingwood Magpies",1991-03-14,211
+"137","Jack Crisp","Collingwood Magpies",1993-10-02,190
+"138","Josh Daicos","Collingwood Magpies",1998-11-26,178
+"139","Goey, Jordan De","Collingwood Magpies",1996-03-15,188
+"140","Jamie Elliott","Collingwood Magpies",1992-08-21,178
+"141","Jack Ginnivan","Collingwood Magpies",NA,NA
+"142","Levi Greenwood","Collingwood Magpies",1989-02-19,181
+"143","Brodie Grundy","Collingwood Magpies",1994-04-15,203
+"144","Oliver Henry","Collingwood Magpies",2002-07-29,186
+"145","Will Hoskin-Elliott","Collingwood Magpies",1993-09-02,186
+"146","Jeremy Howe","Collingwood Magpies",1990-06-29,190
+"147","Mark Keane","Collingwood Magpies",2000-03-17,194
+"148","Will Kelly","Collingwood Magpies",2000-08-16,194
+"149","Max Lynch","Collingwood Magpies",1998-09-12,200
+"150","Finlay Macrae","Collingwood Magpies",2002-03-13,186
+"151","Jack Madgen","Collingwood Magpies",1993-04-25,192
+"152","Brayden Maynard","Collingwood Magpies",1996-09-20,189
+"153","Christopher Mayne","Collingwood Magpies",1988-11-02,188
+"154","Beau McCreery","Collingwood Magpies",NA,NA
+"155","Reef McInnes","Collingwood Magpies",2002-12-12,193
+"156","Liam McMahon","Collingwood Magpies",2002-05-02,194
+"157","Brody Mihocek","Collingwood Magpies",1993-02-04,192
+"158","Darcy Moore","Collingwood Magpies",1996-01-25,203
+"159","Nathan Murphy","Collingwood Magpies",1999-12-15,190
+"160","John Noble","Collingwood Magpies",1997-03-25,180
+"161","Scott Pendlebury","Collingwood Magpies",1988-01-07,191
+"162","Caleb Poulter","Collingwood Magpies",2002-10-12,192
+"163","Isaac Quaynor","Collingwood Magpies",2000-01-15,180
+"164","Jay Rantall","Collingwood Magpies",2001-06-10,184
+"165","Jordan Roughead","Collingwood Magpies",1990-11-03,200
+"166","Trey Ruscoe","Collingwood Magpies",2001-11-03,190
+"167","Steele Sidebottom","Collingwood Magpies",1991-01-02,184
+"168","Brayden Sier","Collingwood Magpies",1997-12-12,191
+"169","Josh Thomas","Collingwood Magpies",1991-10-01,178
+"170","Anton Tohill","Collingwood Magpies",1999-12-14,191
+"171","Tom Wilson","Collingwood Magpies",1997-06-14,194
+"172","Patrick Ambrose","Essendon Bombers",1991-09-01,191
+"173","Cody Brand","Essendon Bombers",2002-05-23,195
+"174","Nick Bryan","Essendon Bombers",2001-10-22,202
+"175","Ned Cahill","Essendon Bombers",2001-01-11,178
+"176","Jye Caldwell","Essendon Bombers",2000-09-28,183
+"177","Dylan Clarke","Essendon Bombers",1998-09-06,187
+"178","Nikolas Cox","Essendon Bombers",2002-01-15,199
+"179","Tom Cutler","Essendon Bombers",1995-02-20,192
+"180","Sam Draper","Essendon Bombers",1998-09-28,205
+"181","Josh Eyre","Essendon Bombers",2002-10-24,197
+"182","Aaron Francis","Essendon Bombers",1997-08-10,192
+"183","Martin Gleeson","Essendon Bombers",1994-08-25,191
+"184","Matt Guelfi","Essendon Bombers",1997-08-14,184
+"185","Brayden Ham","Essendon Bombers",1999-04-25,181
+"186","Dyson Heppell","Essendon Bombers",1992-05-14,189
+"187","Nick Hind","Essendon Bombers",1994-08-19,180
+"188","Tom Hird","Essendon Bombers",2001-03-28,182
+"189","Cale Hooker","Essendon Bombers",1988-10-13,198
+"190","Michael Hurley","Essendon Bombers",1990-06-01,192
+"191","Lachlan Johnson","Essendon Bombers",2001-08-07,176
+"192","Harrison Jones","Essendon Bombers",2001-02-25,194
+"193","Kyle Langford","Essendon Bombers",1996-12-01,191
+"194","Jayden Laverde","Essendon Bombers",1996-04-12,191
+"195","Cian McBride","Essendon Bombers",2001-04-19,197
+"196","Anthony McDonald-Tipungwuti","Essendon Bombers",1993-04-22,171
+"197","Andrew McGrath","Essendon Bombers",1998-06-02,178
+"198","Ross McQuillan","Essendon Bombers",1999-01-18,188
+"199","Zachary Merrett","Essendon Bombers",1995-10-03,180
+"200","Irving Mosquito","Essendon Bombers",2000-08-24,176
+"201","Darcy Parish","Essendon Bombers",1997-07-25,181
+"202","Archie Perkins","Essendon Bombers",2002-03-26,185
+"203","Andrew Phillips","Essendon Bombers",1991-07-03,201
+"204","Mason Redman","Essendon Bombers",1997-08-26,187
+"205","Zach Reid","Essendon Bombers",2002-03-02,202
+"206","Jordan Ridley","Essendon Bombers",1998-10-20,192
+"207","Dylan Shiel","Essendon Bombers",1993-03-09,182
+"208","Devon Smith","Essendon Bombers",1993-05-20,174
+"209","Will Snelling","Essendon Bombers",1997-08-06,175
+"210","James Stewart","Essendon Bombers",1994-03-04,199
+"211","Jake Stringer","Essendon Bombers",1994-04-25,192
+"212","Peter Wright","Essendon Bombers",1996-09-08,203
+"213","David Zaharakis","Essendon Bombers",1990-02-21,180
+"214","Brandon Zerk-Thatcher","Essendon Bombers",1998-08-25,195
+"215","Blake Acres","Fremantle Dockers",1995-10-07,191
+"216","James Aish","Fremantle Dockers",1995-11-08,183
+"217","Bailey Banfield","Fremantle Dockers",1998-02-26,190
+"218","Brett Bewley","Fremantle Dockers",1995-04-14,185
+"219","Connor Blakely","Fremantle Dockers",1996-03-02,188
+"220","Andrew Brayshaw","Fremantle Dockers",1999-11-08,184
+"221","Adam Cerra","Fremantle Dockers",1999-10-07,188
+"222","Heath Chapman","Fremantle Dockers",2002-01-31,193
+"223","Travis Colyer","Fremantle Dockers",1991-08-24,175
+"224","Reece Conca","Fremantle Dockers",1992-08-12,181
+"225","Brennan Cox","Fremantle Dockers",1998-08-13,195
+"226","Mitchell Crowden","Fremantle Dockers",1999-04-28,176
+"227","Sean Darcy","Fremantle Dockers",1998-06-12,202
+"228","Taylin Duman","Fremantle Dockers",1998-04-18,193
+"229","Minairo Frederick","Fremantle Dockers",2000-05-17,183
+"230","Nathan Fyfe","Fremantle Dockers",1991-09-18,192
+"231","Stefan Giro","Fremantle Dockers",1999-03-10,175
+"232","Joel Hamling","Fremantle Dockers",1993-04-09,194
+"233","Liam Henry","Fremantle Dockers",2001-08-28,179
+"234","Stephen Hill","Fremantle Dockers",1990-05-01,183
+"235","Ethan Hughes","Fremantle Dockers",1994-12-07,188
+"236","Rory Lobb","Fremantle Dockers",1993-02-09,206
+"237","Griffin Logue","Fremantle Dockers",1998-04-13,193
+"238","Lloyd Meek","Fremantle Dockers",1998-04-22,203
+"239","David Mundy","Fremantle Dockers",1985-07-20,193
+"240","Nathan O'Driscoll","Fremantle Dockers",2002-05-17,187
+"241","Alex Pearce","Fremantle Dockers",1995-06-09,201
+"242","Luke Ryan","Fremantle Dockers",1996-02-06,187
+"243","Lachlan Schultz","Fremantle Dockers",1997-11-30,178
+"244","Caleb Serong","Fremantle Dockers",2001-02-09,178
+"245","Sam Sturt","Fremantle Dockers",2000-05-12,189
+"246","Sam Switkowski","Fremantle Dockers",1996-11-20,179
+"247","Matthew Taberner","Fremantle Dockers",1993-06-17,198
+"248","Leno Thomas","Fremantle Dockers",2001-05-12,181
+"249","Josh Treacy","Fremantle Dockers",NA,NA
+"250","Darcy Tucker","Fremantle Dockers",1997-01-23,184
+"251","Luke Valente","Fremantle Dockers",2000-05-08,187
+"252","Brandon Walker","Fremantle Dockers",2002-10-17,183
+"253","Michael Walters","Fremantle Dockers",1991-01-07,178
+"254","Tobe Watson","Fremantle Dockers",1997-12-03,190
+"255","Joel Western","Fremantle Dockers",2002-10-12,171
+"256","Nathan Wilson","Fremantle Dockers",1993-01-07,185
+"257","Hayden Young","Fremantle Dockers",2001-04-11,188
+"258","Ryan Angwin","GWS Giants",2002-12-12,184
+"259","Lachlan Ash","GWS Giants",2001-06-21,186
+"260","Kieren Briggs","GWS Giants",1999-10-06,200
+"261","Callum Brown","GWS Giants",2000-08-15,188
+"262","Tanner Bruhn","GWS Giants",2002-05-27,183
+"263","Jack Buckley","GWS Giants",1997-12-17,193
+"264","Matthew Buntine","GWS Giants",1993-10-19,189
+"265","Stephen Coniglio","GWS Giants",1993-12-15,182
+"266","Aidan Corr","GWS Giants",1994-05-17,195
+"267","Isaac Cumming","GWS Giants",1998-08-11,184
+"268","Brent Daniels","GWS Giants",1999-03-09,170
+"269","Phil Davis","GWS Giants",1990-08-30,197
+"270","Boer, Matthew De","GWS Giants",1990-03-10,189
+"271","Jeremy Finlayson","GWS Giants",1996-02-09,196
+"272","Cameron Fleeton","GWS Giants",2002-06-17,192
+"273","Matthew Flynn","GWS Giants",1997-09-13,200
+"274","Tom Green","GWS Giants",2001-01-23,188
+"275","Toby Greene","GWS Giants",1993-09-25,182
+"276","Jackson Hately","GWS Giants",2000-10-21,190
+"277","Nick Haynes","GWS Giants",1992-05-18,193
+"278","Ian Hill","GWS Giants",2000-02-09,175
+"279","Harrison Himmelberg","GWS Giants",1996-05-08,194
+"280","Jesse Hogan","GWS Giants",1995-02-12,195
+"281","Jacob Hopper","GWS Giants",1997-02-06,187
+"282","Thomas Hutchesson","GWS Giants",1995-04-04,177
+"283","Connor Idun","GWS Giants",2000-07-29,191
+"284","Lachlan Keeffe","GWS Giants",1990-04-14,204
+"285","Joshua Kelly","GWS Giants",1995-02-12,184
+"286","Adam Kennedy","GWS Giants",1992-07-12,182
+"287","Daniel Lloyd","GWS Giants",1992-02-18,187
+"288","Shane Mumford","GWS Giants",1986-07-05,198
+"289","Xavier O'Halloran","GWS Giants",2000-07-11,186
+"290","Harry Perryman","GWS Giants",1998-12-19,184
+"291","Braydon Preuss","GWS Giants",1995-06-16,206
+"292","Samuel Reid","GWS Giants",1989-11-07,188
+"293","Jake Riccardi","GWS Giants",1999-11-07,195
+"294","Will Shaw","GWS Giants",NA,180
+"295","Nicholas Shipley","GWS Giants",1999-06-25,188
+"296","Zachary Sproule","GWS Giants",1998-05-12,197
+"297","Jake Stein","GWS Giants",1994-01-17,195
+"298","Conor Stone","GWS Giants",2002-04-22,188
+"299","Tim Taranto","GWS Giants",1998-01-28,187
+"300","Sam Taylor","GWS Giants",1999-05-05,196
+"301","Callan Ward","GWS Giants",1990-04-10,187
+"302","Jacob Wehr","GWS Giants",1998-07-05,184
+"303","Lachie Whitfield","GWS Giants",1994-07-18,187
+"304","Tom Atkins","Geelong Cats",1995-09-18,180
+"305","Jed Bews","Geelong Cats",1993-12-14,186
+"306","Mark Blicavs","Geelong Cats",1991-03-28,198
+"307","Oscar Brownless","Geelong Cats",2000-02-16,186
+"308","Jeremy Cameron","Geelong Cats",1993-04-01,196
+"309","Jordan Clark","Geelong Cats",2000-10-16,185
+"310","Bradley Close","Geelong Cats",1998-07-30,181
+"311","Charlie Constable","Geelong Cats",1999-05-18,191
+"312","Luke Dahlhaus","Geelong Cats",1992-08-21,179
+"313","Patrick Dangerfield","Geelong Cats",1990-04-05,189
+"314","Koning, Sam De","Geelong Cats",2001-02-26,200
+"315","Mitchell Duncan","Geelong Cats",1991-06-10,188
+"316","Francis Evans","Geelong Cats",2001-08-23,182
+"317","Darcy Fort","Geelong Cats",1993-08-06,204
+"318","Cameron Guthrie","Geelong Cats",1992-08-19,187
+"319","Zach Guthrie","Geelong Cats",1998-06-30,187
+"320","Tom Hawkins","Geelong Cats",1988-07-21,198
+"321","Lachlan Henderson","Geelong Cats",1989-12-14,196
+"322","Jack Henry","Geelong Cats",1998-08-29,191
+"323","Shaun Higgins","Geelong Cats",1988-03-04,184
+"324","Max Holmes","Geelong Cats",2002-08-29,189
+"325","Ben Jarvis","Geelong Cats",2000-07-27,189
+"326","Josh Jenkins","Geelong Cats",1989-02-08,200
+"327","Jake Kolodjashnij","Geelong Cats",1995-08-09,193
+"328","Nathan Kreuger","Geelong Cats",1999-06-25,196
+"329","Sam Menegola","Geelong Cats",1992-03-07,189
+"330","Gryan Miers","Geelong Cats",1999-03-30,178
+"331","Quinton Narkle","Geelong Cats",1997-12-03,181
+"332","Shannon Neale","Geelong Cats",2002-07-25,202
+"333","Mark O'Connor","Geelong Cats",1997-01-17,191
+"334","Stefan Okunbor","Geelong Cats",1998-08-12,190
+"335","Brandan Parfitt","Geelong Cats",1998-04-27,180
+"336","Esava Ratugolea","Geelong Cats",1998-07-24,197
+"337","Gary Rohan","Geelong Cats",1991-06-07,189
+"338","Blake Schlensog","Geelong Cats",2000-09-25,198
+"339","Joel Selwood","Geelong Cats",1988-05-26,183
+"340","Sam Simpson","Geelong Cats",1998-06-14,180
+"341","Rhys Stanley","Geelong Cats",1990-12-01,200
+"342","Cooper Stephens","Geelong Cats",2001-01-17,188
+"343","Nick Stevens","Geelong Cats",2002-03-23,192
+"344","Thomas Stewart","Geelong Cats",1993-03-15,190
+"345","Cameron Taheny","Geelong Cats",2001-08-03,185
+"346","Paul Tsapatolis","Geelong Cats",NA,NA
+"347","Zach Tuohy","Geelong Cats",1989-12-10,187
+"348","Ben Ainsworth","Gold Coast Suns",1998-02-10,178
+"349","Noah Anderson","Gold Coast Suns",2001-02-17,188
+"350","Rory Atkins","Gold Coast Suns",1994-07-12,186
+"351","Charlie Ballard","Gold Coast Suns",1999-07-23,195
+"352","Jack Bowes","Gold Coast Suns",1998-01-26,187
+"353","Will Brodie","Gold Coast Suns",1998-08-23,189
+"354","Connor Budarick","Gold Coast Suns",2001-04-06,175
+"355","Chris Burgess","Gold Coast Suns",1995-11-26,191
+"356","Samuel Collins","Gold Coast Suns",1994-06-15,194
+"357","Matt Conroy","Gold Coast Suns",2000-07-11,199
+"358","Josh Corbett","Gold Coast Suns",1996-04-23,190
+"359","Sam Day","Gold Coast Suns",1992-09-06,197
+"360","Brandon Ellis","Gold Coast Suns",1993-08-03,181
+"361","Jy Farrar","Gold Coast Suns",2001-12-07,191
+"362","Brayden Fiorini","Gold Coast Suns",1997-08-22,186
+"363","Sam Flanders","Gold Coast Suns",2001-07-24,182
+"364","Aiden Fyfe","Gold Coast Suns",NA,NA
+"365","Caleb Graham","Gold Coast Suns",2000-09-12,195
+"366","Hugh Greenwood","Gold Coast Suns",1992-03-06,191
+"367","Jarrod Harbrow","Gold Coast Suns",1988-07-18,178
+"368","Elijah Hollands","Gold Coast Suns",2002-04-25,189
+"369","Nicholas Holman","Gold Coast Suns",1995-05-29,189
+"370","Jack Hombsch","Gold Coast Suns",1993-03-07,194
+"371","Ben King","Gold Coast Suns",2000-07-07,202
+"372","Sean Lemmens","Gold Coast Suns",1994-11-02,184
+"373","Jack Lukosius","Gold Coast Suns",2000-08-09,195
+"374","Darcy Macpherson","Gold Coast Suns",1997-10-29,174
+"375","Oleg Markov","Gold Coast Suns",1996-05-08,188
+"376","Jez McLennan","Gold Coast Suns",2000-09-07,185
+"377","Touk Miller","Gold Coast Suns",1996-02-22,178
+"378","Jordan Murdoch","Gold Coast Suns",1992-03-23,190
+"379","Patrick Murtagh","Gold Coast Suns",2000-02-11,196
+"380","Rhys Nicholls","Gold Coast Suns",NA,NA
+"381","Hewago Oea","Gold Coast Suns",NA,NA
+"382","Wil Powell","Gold Coast Suns",1999-08-26,185
+"383","Izak Rankine","Gold Coast Suns",2000-04-23,179
+"384","Malcolm Rosas","Gold Coast Suns",2001-06-27,175
+"385","Matt Rowell","Gold Coast Suns",2001-07-01,178
+"386","Alex Sexton","Gold Coast Suns",1993-12-03,186
+"387","Jeremy Sharp","Gold Coast Suns",2001-08-13,187
+"388","Zac Smith","Gold Coast Suns",1990-02-22,206
+"389","David Swallow","Gold Coast Suns",1992-11-19,185
+"390","Rory Thompson","Gold Coast Suns",1991-03-12,200
+"391","Luke Towey","Gold Coast Suns",1999-07-11,186
+"392","Jacob Townsend","Gold Coast Suns",1993-06-20,187
+"393","Lachlan Weller","Gold Coast Suns",1996-02-23,181
+"394","Jarrod Witts","Gold Coast Suns",1992-09-13,209
+"395","Luke Breust","Hawthorn Hawks",1990-11-11,184
+"396","Tyler Brockman","Hawthorn Hawks",NA,NA
+"397","Keegan Brooksby","Hawthorn Hawks",1990-04-27,197
+"398","Shaun Burgoyne","Hawthorn Hawks",1982-10-21,186
+"399","Jonathon Ceglar","Hawthorn Hawks",1991-02-14,204
+"400","James Cousins","Hawthorn Hawks",1998-03-19,185
+"401","Will Day","Hawthorn Hawks",2001-06-05,187
+"402","Connor Downie","Hawthorn Hawks",2002-05-31,185
+"403","Sam Frost","Hawthorn Hawks",1993-08-28,194
+"404","Denver Grainger-Barras","Hawthorn Hawks",2002-04-17,195
+"405","Damon Greaves","Hawthorn Hawks",2000-04-25,186
+"406","Jack Gunston","Hawthorn Hawks",1991-10-16,193
+"407","Oliver Hanrahan","Hawthorn Hawks",1998-08-27,181
+"408","Blake Hardwick","Hawthorn Hawks",1997-02-05,181
+"409","Kyle Hartigan","Hawthorn Hawks",1991-11-07,194
+"410","Michael Hartley","Hawthorn Hawks",1993-06-07,198
+"411","Daniel Howe","Hawthorn Hawks",1995-12-04,191
+"412","Jarman Impey","Hawthorn Hawks",1995-07-09,178
+"413","Emerson Jeka","Hawthorn Hawks",2001-09-18,197
+"414","Changkuoth Jiath","Hawthorn Hawks",1999-06-13,185
+"415","Jacob Koschitzke","Hawthorn Hawks",2000-07-11,196
+"416","Mitchell Lewis","Hawthorn Hawks",1998-10-14,198
+"417","Finn Maginness","Hawthorn Hawks",2001-02-23,187
+"418","Ben McEvoy","Hawthorn Hawks",1989-07-11,200
+"419","Seamus Mitchell","Hawthorn Hawks",2002-07-03,181
+"420","Tom Mitchell","Hawthorn Hawks",1993-05-31,182
+"421","Dylan Moore","Hawthorn Hawks",1999-08-04,176
+"422","Josh Morris","Hawthorn Hawks",2001-11-07,186
+"423","Harry Morrison","Hawthorn Hawks",1998-11-12,180
+"424","Conor Nash","Hawthorn Hawks",1998-07-28,197
+"425","Tim O'Brien","Hawthorn Hawks",1994-03-28,193
+"426","Jaeger O'Meara","Hawthorn Hawks",1994-02-23,183
+"427","Jonathon Patton","Hawthorn Hawks",1993-05-20,198
+"428","Harry Pepper","Hawthorn Hawks",2001-08-09,180
+"429","Tom Phillips","Hawthorn Hawks",1996-05-07,187
+"430","Ned Reeves","Hawthorn Hawks",1998-10-31,208
+"431","Jack Saunders","Hawthorn Hawks",NA,NA
+"432","Jack Scrimshaw","Hawthorn Hawks",1998-09-04,193
+"433","Tom Scully","Hawthorn Hawks",1991-05-15,181
+"434","Liam Shiels","Hawthorn Hawks",1991-04-29,183
+"435","James Sicily","Hawthorn Hawks",1995-01-06,186
+"436","Isaac Smith","Hawthorn Hawks",1988-12-30,188
+"437","Chad Wingard","Hawthorn Hawks",1993-07-29,183
+"438","James Worpel","Hawthorn Hawks",1999-01-24,185
+"439","Oskar Baker","Melbourne Demons",1998-05-25,184
+"440","Toby Bedford","Melbourne Demons",2000-05-27,178
+"441","Jake Bowey","Melbourne Demons",2002-09-12,175
+"442","Austin Bradtke","Melbourne Demons",2000-05-27,204
+"443","Angus Brayshaw","Melbourne Demons",1996-01-09,187
+"444","Ben Brown","Melbourne Demons",1992-11-20,200
+"445","Mitchell Brown","Melbourne Demons",1990-08-28,196
+"446","Kade Chandler","Melbourne Demons",2000-01-13,174
+"447","Bayley Fritsch","Melbourne Demons",1996-12-06,188
+"448","Max Gawn","Melbourne Demons",1991-12-30,208
+"449","James Harmes","Melbourne Demons",1995-10-05,185
+"450","Michael Hibberd","Melbourne Demons",1990-01-03,186
+"451","Marty Hore","Melbourne Demons",1996-03-05,190
+"452","Jayden Hunt","Melbourne Demons",1995-04-03,187
+"453","Luke Jackson","Melbourne Demons",2001-09-29,198
+"454","Neville Jetta","Melbourne Demons",1990-02-12,180
+"455","Nathan Jones","Melbourne Demons",1988-01-20,180
+"456","James Jordan","Melbourne Demons",2000-12-20,186
+"457","Ed Langdon","Melbourne Demons",1996-02-01,182
+"458","Bailey Laurie","Melbourne Demons",2002-03-24,179
+"459","Jake Lever","Melbourne Demons",1996-03-05,195
+"460","Jay Lockhart","Melbourne Demons",1996-02-03,177
+"461","Steven May","Melbourne Demons",1992-01-10,193
+"462","Tom McDonald","Melbourne Demons",1992-09-18,194
+"463","Jake Melksham","Melbourne Demons",1991-08-29,186
+"464","Alex Neal-Bullen","Melbourne Demons",1996-01-09,182
+"465","Aaron Nietschke","Melbourne Demons",2000-05-26,184
+"466","Clayton Oliver","Melbourne Demons",1997-07-22,187
+"467","Christian Petracca","Melbourne Demons",1996-01-04,186
+"468","Harrison Petty","Melbourne Demons",1999-11-12,197
+"469","Kysaiah Pickett","Melbourne Demons",2001-06-02,170
+"470","Trent Rivers","Melbourne Demons",2001-07-30,188
+"471","Fraser Rosman","Melbourne Demons",2002-05-30,193
+"472","Christian Salem","Melbourne Demons",1995-07-15,183
+"473","Joel Smith","Melbourne Demons",1996-02-25,191
+"474","Charlie Spargo","Melbourne Demons",1999-11-25,173
+"475","Tom Sparrow","Melbourne Demons",2000-05-31,183
+"476","Adam Tomlinson","Melbourne Demons",1993-08-10,194
+"477","Aaron Vandenberg","Melbourne Demons",1992-03-03,188
+"478","Jack Viney","Melbourne Demons",1994-04-13,178
+"479","Sam Weideman","Melbourne Demons",1997-06-26,195
+"480","Jed Anderson","North Melbourne Kangaroos",1994-02-02,179
+"481","Shaun Atley","North Melbourne Kangaroos",1992-09-13,189
+"482","Aiden Bonar","North Melbourne Kangaroos",1999-03-08,188
+"483","Atu Bosenavulagi","North Melbourne Kangaroos",2000-09-17,180
+"484","Tom Campbell","North Melbourne Kangaroos",1991-11-02,201
+"485","Charlie Comben","North Melbourne Kangaroos",2001-07-20,199
+"486","Ben Cunnington","North Melbourne Kangaroos",1991-06-30,185
+"487","Luke Davies-Uniacke","North Melbourne Kangaroos",1999-06-08,188
+"488","Trent Dumont","North Melbourne Kangaroos",1995-06-30,186
+"489","Eddie Ford","North Melbourne Kangaroos",2002-06-21,184
+"490","Taylor Garner","North Melbourne Kangaroos",1994-01-08,187
+"491","Todd Goldstein","North Melbourne Kangaroos",1988-07-01,201
+"492","Aaron Hall","North Melbourne Kangaroos",1990-11-09,185
+"493","Kyron Hayden","North Melbourne Kangaroos",1999-06-07,186
+"494","Nick Larkey","North Melbourne Kangaroos",1998-06-06,198
+"495","Charlie Lazzaro","North Melbourne Kangaroos",2002-03-25,179
+"496","Jack Mahony","North Melbourne Kangaroos",2001-11-12,176
+"497","Luke McDonald","North Melbourne Kangaroos",1995-02-09,189
+"498","Matthew McGuinness","North Melbourne Kangaroos",2000-06-13,192
+"499","Ben McKay","North Melbourne Kangaroos",1997-12-24,201
+"500","Connor Menadue","North Melbourne Kangaroos",1996-09-19,187
+"501","Flynn Perez","North Melbourne Kangaroos",2001-08-25,187
+"502","Will Phillips","North Melbourne Kangaroos",2002-05-22,180
+"503","Jared Polec","North Melbourne Kangaroos",1992-10-12,187
+"504","Tom Powell","North Melbourne Kangaroos",2002-03-02,183
+"505","Bailey Scott","North Melbourne Kangaroos",2000-07-09,186
+"506","Jy Simpkin","North Melbourne Kangaroos",1998-03-05,182
+"507","Phoenix Spicer","North Melbourne Kangaroos",2002-01-30,173
+"508","Jaidyn Stephenson","North Melbourne Kangaroos",1999-01-15,188
+"509","Robbie Tarrant","North Melbourne Kangaroos",1989-04-25,196
+"510","Curtis Taylor","North Melbourne Kangaroos",2000-04-06,187
+"511","Tarryn Thomas","North Melbourne Kangaroos",2000-03-25,189
+"512","Kayne Turner","North Melbourne Kangaroos",1995-12-31,180
+"513","Dom Tyson","North Melbourne Kangaroos",1993-06-08,186
+"514","Joshua Walker","North Melbourne Kangaroos",1992-11-12,197
+"515","Patrick Walker","North Melbourne Kangaroos",NA,NA
+"516","Will Walker","North Melbourne Kangaroos",1999-03-30,186
+"517","Tristan Xerri","North Melbourne Kangaroos",1999-03-15,201
+"518","Lachie Young","North Melbourne Kangaroos",1999-04-06,189
+"519","Jack Ziebell","North Melbourne Kangaroos",1991-02-28,188
+"520","Cameron Zurhaar","North Melbourne Kangaroos",1998-05-22,189
+"521","Aliir Aliir","Port Adelaide Power",1994-09-05,195
+"522","Karl Amon","Port Adelaide Power",1995-08-19,181
+"523","Miles Bergman","Port Adelaide Power",2001-10-18,186
+"524","Travis Boak","Port Adelaide Power",1988-08-01,183
+"525","Riley Bonner","Port Adelaide Power",1997-03-07,190
+"526","Trent Burgoyne","Port Adelaide Power",2001-10-02,177
+"527","Ryan Burton","Port Adelaide Power",1997-01-31,191
+"528","Zak Butters","Port Adelaide Power",2000-09-08,181
+"529","Darcy Byrne-Jones","Port Adelaide Power",1995-09-20,181
+"530","Tom Clurey","Port Adelaide Power",1994-03-23,193
+"531","Charlie Dixon","Port Adelaide Power",1990-09-23,200
+"532","Willem Drew","Port Adelaide Power",1998-10-01,188
+"533","Xavier Duursma","Port Adelaide Power",2000-07-07,186
+"534","Orazio Fantasia","Port Adelaide Power",1995-09-14,178
+"535","Kane Farrell","Port Adelaide Power",1999-03-17,182
+"536","Martin Frederick","Port Adelaide Power",2000-05-17,178
+"537","Joel Garner","Port Adelaide Power",1999-05-21,184
+"538","Mitch Georgiades","Port Adelaide Power",2001-09-28,191
+"539","Tyson Goldsack","Port Adelaide Power",1987-05-22,193
+"540","Robbie Gray","Port Adelaide Power",1988-03-30,183
+"541","Hamish Hartlett","Port Adelaide Power",1990-08-14,185
+"542","Sam Hayes","Port Adelaide Power",1999-06-09,203
+"543","Dan Houston","Port Adelaide Power",1997-05-12,186
+"544","Thomas Jonas","Port Adelaide Power",1991-01-09,188
+"545","Lachlan Jones","Port Adelaide Power",2002-04-09,186
+"546","Peter Ladhams","Port Adelaide Power",1998-01-14,202
+"547","Jarrod Lienert","Port Adelaide Power",1994-08-05,195
+"548","Ollie Lord","Port Adelaide Power",2002-01-02,195
+"549","Scott Lycett","Port Adelaide Power",1992-09-26,203
+"550","Todd Marshall","Port Adelaide Power",1998-10-08,198
+"551","Sam Mayes","Port Adelaide Power",1994-05-20,187
+"552","Trent McKenzie","Port Adelaide Power",1992-04-03,191
+"553","Jackson Mead","Port Adelaide Power",2001-09-30,184
+"554","Steven Motlop","Port Adelaide Power",1991-03-12,183
+"555","Sam Powell-Pepper","Port Adelaide Power",1998-01-08,187
+"556","Tom Rockliff","Port Adelaide Power",1990-02-22,185
+"557","Connor Rozee","Port Adelaide Power",2000-01-22,185
+"558","Taj Schofield","Port Adelaide Power",NA,NA
+"559","Dylan Williams","Port Adelaide Power",2001-07-01,185
+"560","Oliver Wines","Port Adelaide Power",1994-10-07,187
+"561","Boyd Woodcock","Port Adelaide Power",2000-03-05,179
+"562","Jake Aarts","Richmond Tigers",1994-12-08,177
+"563","David Astbury","Richmond Tigers",1991-02-26,195
+"564","Liam Baker","Richmond Tigers",1998-01-27,173
+"565","Noah Balta","Richmond Tigers",1999-10-23,194
+"566","Shai Bolton","Richmond Tigers",1998-12-08,175
+"567","Nathan Broad","Richmond Tigers",1993-04-15,192
+"568","Josh Caddy","Richmond Tigers",1992-09-28,186
+"569","Jason Castagna","Richmond Tigers",1996-07-12,181
+"570","Mabior Chol","Richmond Tigers",1997-01-29,200
+"571","Callum Coleman-Jones","Richmond Tigers",1999-06-13,200
+"572","Mate Colina","Richmond Tigers",1999-05-20,209
+"573","Riley Collier-Dawkins","Richmond Tigers",2000-02-03,189
+"574","Trent Cotchin","Richmond Tigers",1990-04-07,185
+"575","Noah Cumberland","Richmond Tigers",2001-03-15,183
+"576","Thomson Dow","Richmond Tigers",2001-10-16,182
+"577","Shane Edwards","Richmond Tigers",1988-10-25,182
+"578","Ryan Garthwaite","Richmond Tigers",1998-06-30,192
+"579","Jack Graham","Richmond Tigers",1998-02-25,181
+"580","Dylan Grimes","Richmond Tigers",1991-07-16,193
+"581","Bachar Houli","Richmond Tigers",1988-05-12,180
+"582","Kane Lambert","Richmond Tigers",1991-11-26,178
+"583","Tom Lynch","Richmond Tigers",1992-10-31,199
+"584","Dustin Martin","Richmond Tigers",1991-06-26,187
+"585","Will Martyn","Richmond Tigers",2001-03-29,183
+"586","Kamdyn Mcintosh","Richmond Tigers",1994-04-03,191
+"587","Ben Miller","Richmond Tigers",1999-08-31,195
+"588","Patrick Naish","Richmond Tigers",1999-01-15,182
+"589","Toby Nankervis","Richmond Tigers",1994-08-12,199
+"590","Bigoa Nyuon","Richmond Tigers",2001-05-18,195
+"591","Marlion Pickett","Richmond Tigers",1992-01-06,184
+"592","Dion Prestia","Richmond Tigers",1992-10-12,175
+"593","Hugo Ralphsmith","Richmond Tigers",2001-11-09,186
+"594","Jack Riewoldt","Richmond Tigers",1988-10-31,193
+"595","Daniel Rioli","Richmond Tigers",1997-04-16,179
+"596","Maurice Rioli","Richmond Tigers",NA,NA
+"597","Jack Ross","Richmond Tigers",2000-09-03,187
+"598","Samson Ryan","Richmond Tigers",2000-12-09,206
+"599","Jayden Short","Richmond Tigers",1996-01-24,178
+"600","Ivan Soldo","Richmond Tigers",1996-04-14,204
+"601","Sydney Stack","Richmond Tigers",2000-04-28,179
+"602","Nick Vlastuin","Richmond Tigers",1994-04-19,187
+"603","Sam Alabakis","St Kilda Saints",1997-05-02,211
+"604","Josh Battle","St Kilda Saints",1998-09-01,193
+"605","Jack Billings","St Kilda Saints",1995-08-18,184
+"606","Daniel Butler","St Kilda Saints",1996-06-03,182
+"607","Ryan Byrnes","St Kilda Saints",2001-05-03,181
+"608","Jack Bytel","St Kilda Saints",2000-03-14,189
+"609","Jake Carlisle","St Kilda Saints",1991-10-01,200
+"610","Hunter Clark","St Kilda Saints",1999-03-26,187
+"611","Oscar Clavarino","St Kilda Saints",1999-05-22,197
+"612","Nicholas Coffield","St Kilda Saints",1999-10-23,191
+"613","Leo Connolly","St Kilda Saints",2001-08-07,181
+"614","Brad Crouch","St Kilda Saints",1994-01-14,186
+"615","Luke Dunstan","St Kilda Saints",1995-01-29,185
+"616","James Frawley","St Kilda Saints",1988-09-20,193
+"617","Jarryn Geary","St Kilda Saints",1988-06-23,183
+"618","Jade Gresham","St Kilda Saints",1997-08-24,179
+"619","Daniel Hannebery","St Kilda Saints",1991-02-24,181
+"620","Jack Higgins","St Kilda Saints",1999-03-19,177
+"621","Tom Highmore","St Kilda Saints",1998-02-24,192
+"622","Bradley Hill","St Kilda Saints",1993-07-09,179
+"623","Dougal Howard","St Kilda Saints",1996-03-25,199
+"624","Zak Jones","St Kilda Saints",1995-03-15,181
+"625","Darragh Joyce","St Kilda Saints",1997-04-23,195
+"626","Dean Kent","St Kilda Saints",1994-02-24,180
+"627","Max King","St Kilda Saints",2000-07-07,202
+"628","Ben Long","St Kilda Saints",1997-08-21,184
+"629","Jack Lonie","St Kilda Saints",1996-08-13,175
+"630","Rowan Marshall","St Kilda Saints",1995-11-24,201
+"631","Daniel McKenzie","St Kilda Saints",1996-05-17,185
+"632","Shaun McKernan","St Kilda Saints",1990-09-01,196
+"633","Matthew McLeod-Allison","St Kilda Saints",2002-01-29,192
+"634","Tim Membrey","St Kilda Saints",1994-05-26,190
+"635","Ben Paton","St Kilda Saints",1998-10-19,187
+"636","Dylan Roberton","St Kilda Saints",1991-06-21,194
+"637","Sebastian Ross","St Kilda Saints",1993-05-07,188
+"638","Patrick Ryder","St Kilda Saints",1988-03-14,197
+"639","Jack Sinclair","St Kilda Saints",1995-02-12,181
+"640","Jack Steele","St Kilda Saints",1995-12-13,187
+"641","Jimmy Webster","St Kilda Saints",1993-06-28,188
+"642","Callum Wilkie","St Kilda Saints",1996-03-10,191
+"643","Joel Amartey","Sydney Swans",1999-09-02,197
+"644","James Bell","Sydney Swans",1999-02-10,183
+"645","Nick Blakey","Sydney Swans",2000-02-27,195
+"646","Kaiden Brand","Sydney Swans",1994-04-08,198
+"647","Braeden Campbell","Sydney Swans",2002-02-04,181
+"648","Malachy Carruthers","Sydney Swans",NA,NA
+"649","Ryan Clarke","Sydney Swans",1997-06-17,186
+"650","Harry Cunningham","Sydney Swans",1993-12-06,181
+"651","Jordan Dawson","Sydney Swans",1997-04-09,192
+"652","Oliver Florent","Sydney Swans",1998-07-22,185
+"653","Robbie Fox","Sydney Swans",1993-04-16,186
+"654","Lance Franklin","Sydney Swans",1987-01-30,199
+"655","Will Gould","Sydney Swans",2001-01-14,191
+"656","Sam Gray","Sydney Swans",1992-02-01,176
+"657","Errol Gulden","Sydney Swans",2002-07-18,175
+"658","Will Hayward","Sydney Swans",1998-10-26,187
+"659","Isaac Heeney","Sydney Swans",1996-05-05,186
+"660","George Hewett","Sydney Swans",1995-12-29,187
+"661","Tom Hickey","Sydney Swans",1991-03-06,201
+"662","Josh P. Kennedy","Sydney Swans",1988-06-20,189
+"663","Matthew Ling","Sydney Swans",1999-04-21,184
+"664","Jake Lloyd","Sydney Swans",1993-09-20,181
+"665","Tom McCartin","Sydney Swans",1999-12-30,193
+"666","Logan McDonald","Sydney Swans",2002-04-04,196
+"667","Hayden McLean","Sydney Swans",1999-01-20,197
+"668","Justin Mcinerney","Sydney Swans",2000-08-18,187
+"669","Lewis Melican","Sydney Swans",1996-11-04,195
+"670","Callum Mills","Sydney Swans",1997-04-02,189
+"671","Sam Naismith","Sydney Swans",1992-07-16,206
+"672","Barry O'Connor","Sydney Swans",1998-06-26,193
+"673","Colin O'Riordan","Sydney Swans",1995-10-12,187
+"674","Tom Papley","Sydney Swans",1996-07-13,178
+"675","Luke Parker","Sydney Swans",1992-10-25,183
+"676","Dane Rampe","Sydney Swans",1990-06-02,187
+"677","Sam Reid","Sydney Swans",1991-12-27,196
+"678","Ben Ronke","Sydney Swans",1997-12-18,183
+"679","James Rowbottom","Sydney Swans",2000-09-19,186
+"680","Marc Sheather","Sydney Swans",2002-06-11,185
+"681","Callum Sinclair","Sydney Swans",1989-09-23,200
+"682","Dylan Stephens","Sydney Swans",2001-01-08,183
+"683","Lewis Taylor","Sydney Swans",1995-02-17,175
+"684","Chad Warner","Sydney Swans",2001-05-19,181
+"685","Sam Wicks","Sydney Swans",1999-09-14,181
+"686","Chee, Brendon Ah","West Coast Eagles",1993-12-21,189
+"687","Brayden Ainsworth","West Coast Eagles",1998-11-21,184
+"688","Oscar Allen","West Coast Eagles",1999-03-19,192
+"689","Tom Barrass","West Coast Eagles",1995-10-08,196
+"690","Jarrod Brander","West Coast Eagles",1999-02-11,195
+"691","Jarrod Cameron","West Coast Eagles",2000-05-03,182
+"692","Tom Cole","West Coast Eagles",1997-05-28,186
+"693","Jamie Cripps","West Coast Eagles",1992-04-23,183
+"694","Jack Darling","West Coast Eagles",1992-06-13,191
+"695","Liam Duggan","West Coast Eagles",1996-12-11,184
+"696","Harry Edwards","West Coast Eagles",2000-10-01,197
+"697","Luke Edwards","West Coast Eagles",2002-01-12,188
+"698","Luke Foley","West Coast Eagles",1999-10-08,188
+"699","Andrew Gaff","West Coast Eagles",1992-06-16,183
+"700","Shannon Hurn","West Coast Eagles",1987-09-04,187
+"701","Mark Hutchings","West Coast Eagles",1991-05-25,182
+"702","Callum Jamieson","West Coast Eagles",2000-07-31,200
+"703","Ben Johnson","West Coast Eagles",2001-03-06,180
+"704","Jamaine Jones","West Coast Eagles",1998-09-29,180
+"705","Tim Kelly","West Coast Eagles",1994-07-26,182
+"706","Joshua Kennedy","West Coast Eagles",1987-08-25,196
+"707","Zac Langdon","West Coast Eagles",1995-11-13,177
+"708","Jeremy McGovern","West Coast Eagles",1992-04-15,196
+"709","Nicholas Naitanui","West Coast Eagles",1990-05-04,201
+"710","Jackson Nelson","West Coast Eagles",1996-03-15,187
+"711","Xavier O'Neill","West Coast Eagles",2000-08-03,185
+"712","Jack Petruccelle","West Coast Eagles",1999-04-12,185
+"713","Jack Redden","West Coast Eagles",1990-12-09,190
+"714","Willie Rioli","West Coast Eagles",1995-06-04,175
+"715","Josh Rotham","West Coast Eagles",1998-02-25,193
+"716","Liam Ryan","West Coast Eagles",1996-10-02,179
+"717","Dominic Sheed","West Coast Eagles",1995-04-10,185
+"718","Bradley Sheppard","West Coast Eagles",1991-05-23,187
+"719","Luke Shuey","West Coast Eagles",1990-06-02,183
+"720","Zane Trew","West Coast Eagles",NA,NA
+"721","Nathan Vardy","West Coast Eagles",1991-06-25,200
+"722","Daniel Venables","West Coast Eagles",1998-11-19,187
+"723","Jake Waterman","West Coast Eagles",1998-05-06,191
+"724","Bailey Williams","West Coast Eagles",2000-04-17,199
+"725","Isiah Winder","West Coast Eagles",2002-05-16,180
+"726","Alex Witherden","West Coast Eagles",1998-09-10,188
+"727","Elliot Yeo","West Coast Eagles",1993-10-01,190
+"728","Dominic Bedendo","Western Bulldogs",2002-07-09,188
+"729","Marcus Bontempelli","Western Bulldogs",1995-11-24,193
+"730","Josh Bruce","Western Bulldogs",1992-06-08,197
+"731","Louis Butler","Western Bulldogs",2001-08-26,184
+"732","Ben Cavarra","Western Bulldogs",1995-12-20,173
+"733","Zaine Cordy","Western Bulldogs",1996-10-27,193
+"734","Hayden Crozier","Western Bulldogs",1993-12-24,185
+"735","Bailey Dale","Western Bulldogs",1996-07-22,183
+"736","Caleb Daniel","Western Bulldogs",1996-07-07,168
+"737","Josh Dunkley","Western Bulldogs",1997-01-09,190
+"738","Taylor Duryea","Western Bulldogs",1991-04-24,179
+"739","Timothy English","Western Bulldogs",1997-08-10,205
+"740","Riley Garcia","Western Bulldogs",2001-01-30,177
+"741","Ryan Gardner","Western Bulldogs",1997-06-01,197
+"742","Mitchell Hannan","Western Bulldogs",1994-03-09,189
+"743","Will Hayes","Western Bulldogs",1995-06-05,181
+"744","Lachlan Hunter","Western Bulldogs",1994-12-13,183
+"745","Jason Johannisen","Western Bulldogs",1992-11-08,180
+"746","Lin Jong","Western Bulldogs",1993-06-04,188
+"747","Alex Keath","Western Bulldogs",1992-01-20,197
+"748","Buku Khamis","Western Bulldogs",2000-03-24,189
+"749","Thomas Liberatore","Western Bulldogs",1992-05-16,183
+"750","Patrick Lipinski","Western Bulldogs",1998-07-17,187
+"751","Jackson Macrae","Western Bulldogs",1994-08-03,191
+"752","Stefan Martin","Western Bulldogs",1986-11-17,199
+"753","Toby McLean","Western Bulldogs",1996-01-31,180
+"754","Lachlan McNeil","Western Bulldogs",NA,NA
+"755","Aaron Naughton","Western Bulldogs",1999-11-30,195
+"756","Ed Richards","Western Bulldogs",1999-07-03,185
+"757","Josh Schache","Western Bulldogs",1997-08-21,199
+"758","Bailey Smith","Western Bulldogs",2000-12-07,185
+"759","Roarke Smith","Western Bulldogs",1996-09-11,181
+"760","Jordon Sweet","Western Bulldogs",1998-02-02,203
+"761","Adam Treloar","Western Bulldogs",1993-03-09,182
+"762","Jamarra Ugle-Hagan","Western Bulldogs",2002-04-04,194
+"763","Laitham Vandermeer","Western Bulldogs",1999-02-03,180
+"764","Mitchell Wallis","Western Bulldogs",1992-10-24,186
+"765","Cody Weightman","Western Bulldogs",2001-01-15,177
+"766","Rhylee West","Western Bulldogs",2000-07-12,181
+"767","Bailey Williams","Western Bulldogs",1997-10-10,187
+"768","Easton Wood","Western Bulldogs",1989-09-04,187
+"769","Lewis Young","Western Bulldogs",1998-12-20,197
