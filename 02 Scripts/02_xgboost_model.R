@@ -1,8 +1,8 @@
 #------------------------------------------------------------------------------
-# RANDOM FOREST MODEL
+# XGBoost MODEL
 #------------------------------------------------------------------------------
 # Create a recipe for the model
-ranger_recipe <- 
+xgboost_recipe <- 
   recipe(formula = brownlow_votes ~ ., data = model_data) %>%
   # create id roles for variables not used in the model
   step_rm(match_round, match_date, match_home_team,
@@ -11,38 +11,42 @@ ranger_recipe <-
   # turn the game outcome into a dummy variables
   step_dummy(game_outcome) %>%
   # down sample
-  step_nearmiss(brownlow_votes, under_ratio = 1.1, seed = 345) %>%
+  step_nearmiss(brownlow_votes, under_ratio = 1.1, seed = 678) %>%
   # up sample
-  step_bsmote(brownlow_votes, over_ratio = 1, seed = 456) %>%
+  step_bsmote(brownlow_votes, over_ratio = 1, seed = 789) %>%
   # remove any correlated variables
   step_corr(all_predictors(), -all_nominal())
 
 # Create a model specification
-ranger_spec <- 
-  rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
+xgboost_spec <- 
+  boost_tree(trees = 1000, 
+             min_n = tune(), 
+             tree_depth = tune(), 
+             learn_rate = tune(), 
+             loss_reduction = tune(), 
+             mtry = tune(), 
+             sample_size = tune()) %>% 
   set_mode("classification") %>% 
-  set_engine("ranger")
+  set_engine("xgboost") 
 
 # Create a work flow
-ranger_workflow <- 
+xgboost_workflow <- 
   workflow() %>% 
-  add_recipe(ranger_recipe) %>% 
-  add_model(ranger_spec)
+  add_recipe(xgboost_recipe) %>% 
+  add_model(xgboost_spec)
 
 # Check the accuracy on the bootstrap samples
-set.seed(567)
-ranger_tune <-
-  tune_grid(ranger_workflow,
+set.seed(8910)
+xgboost_tune <-
+  tune_grid(xgboost_workflow, 
             # pass the bootstrap folds
             resamples = bootstrap_folds,
             # specify the metrics to assess the model on
-            metrics = 
-              metric_set(roc_auc, accuracy, sensitivity, 
-                         specificity),
+            metrics = metric_set(roc_auc, accuracy, sensitivity, 
+                                 specificity),
             # pass the grid space
             grid = 5,
             # save the predictions
             control = control_stack_grid()
   )
-
 

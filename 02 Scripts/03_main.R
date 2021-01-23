@@ -16,11 +16,19 @@ source('01_model_data.R')
 #------------------------------------------------------------------------------
 # GET DATA
 #------------------------------------------------------------------------------
-model_data <- get_data(2015, 2020)
+model_data <- get_data(2017, 2020)
+source('02_resamples.R')
 
 #------------------------------------------------------------------------------
 # RUN MODELS
 #------------------------------------------------------------------------------
 source('02_rf_model.R')
+source('02_xgboost_model.R')
+
+st <- stacks() %>%
+  add_candidates(ranger_tune) %>%
+  add_candidates(xgboost_tune) %>%
+  blend_predictions() %>%
+  fit_members()
 
 tictoc::toc()

@@ -118,7 +118,7 @@ get_data <- function(MIN_YEAR, MAX_YEAR){
   joinYear <- tibble(season = rep(seasons, dimension1))
   
   # Build data frame
-  do.call("rbind", replicate(dimension2, df, simplify = FALSE)) %>%
+  complete_df <- do.call("rbind", replicate(dimension2, df, simplify = FALSE)) %>%
     arrange(player_id, player_name) %>%
     bind_cols(joinYear) %>%
     mutate(mean_votes_pg = 0)

@@ -24,4 +24,4 @@ library(themis)
 library(doParallel)
 library(parallel)
 library(themis)
-
+library(stacks)
