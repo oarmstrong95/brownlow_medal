@@ -1,8 +1,8 @@
 #------------------------------------------------------------------------------
-# RANDOM FOREST MODEL
+# NEURAL NETWORK
 #------------------------------------------------------------------------------
 # Create a recipe for the model
-ranger_recipe <- 
+nn_recipe <- 
   recipe(formula = brownlow_votes ~ ., data = model_data) %>%
   # create id roles for variables not used in the model
   step_rm(match_round, match_date, match_home_team,
@@ -11,48 +11,37 @@ ranger_recipe <-
   # turn the game outcome into a dummy variables
   step_dummy(game_outcome) %>%
   # remove any correlated variables
-  step_corr(all_predictors(), -all_nominal()) %>%
+  step_pca(all_predictors()) %>%
   # down sample
-  step_nearmiss(brownlow_votes, under_ratio = 1.1, seed = 345) %>%
+  step_nearmiss(brownlow_votes, under_ratio = 1.1, seed = 121314) %>%
   # up sample
-  step_bsmote(brownlow_votes, over_ratio = 1, seed = 456) %>%
+  step_bsmote(brownlow_votes, over_ratio = 1, seed = 131415) 
 
 # Create a model specification
-ranger_spec <- 
-  rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
+nn_spec <- 
+  mlp(epochs = 100,
+      hidden_units = tune(),
+      dropout = tune()) %>% 
   set_mode("classification") %>% 
-  set_engine("ranger")
+  set_engine("kernlab")
 
 # Create a work flow
-ranger_workflow <- 
+nn_workflow <- 
   workflow() %>% 
-  add_recipe(ranger_recipe) %>% 
-  add_model(ranger_spec)
-
-# Set up a grid for the tuning process
-rf_grid <- grid_regular(
-  # The number of predictors that will be randomly sampled at
-  # each split when creating the tree models.
-  mtry(range = c(10, 15)),
-  # The minimum number of data points in a node that are
-  # required for the node to be split further
-  min_n(range = c(5, 15)),
-  levels = 3
-)
+  add_recipe(nn_recipe) %>% 
+  add_model(nn_spec)
 
 # Check the accuracy on the bootstrap samples
-set.seed(567)
-ranger_tune <-
-  tune_grid(ranger_workflow,
+set.seed(141516)
+nn_tune <-
+  tune_grid(nn_workflow,
             # pass the bootstrap folds
             resamples = bootstrap_folds,
             # specify the metrics to assess the model on
             metrics = 
               metric_set(roc_auc, accuracy, sensitivity, specificity),
             # pass the grid space
-            grid = rf_grid,
+            grid = 25,
             # save the predictions
             control = control_stack_grid()
   )
-
-

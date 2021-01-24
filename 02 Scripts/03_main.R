@@ -11,24 +11,29 @@ setwd("Z:/My Documents/GitHub/brownlow_medal/02 Scripts")
 #------------------------------------------------------------------------------
 source('00_packages.R')
 source('00_functions.R')
-source('01_model_data.R')
 
 #------------------------------------------------------------------------------
 # GET DATA
 #------------------------------------------------------------------------------
+source('01_model_data.R')
 model_data <- get_data(2017, 2020)
-source('02_resamples.R')
+source('01_resamples.R')
 
 #------------------------------------------------------------------------------
 # RUN MODELS
 #------------------------------------------------------------------------------
 source('02_rf_model.R')
 source('02_xgboost_model.R')
+source('02_kknn_model.R')
+source('02_svm_model.R')
+source('02_nn_model.R')
 
-st <- stacks() %>%
-  add_candidates(ranger_tune) %>%
-  add_candidates(xgboost_tune) %>%
-  blend_predictions() %>%
-  fit_members()
+#------------------------------------------------------------------------------
+# CREATE ENSEMBLE
+#------------------------------------------------------------------------------
+# Clear environment
+rm(list=setdiff(ls(), c("ranger_tune", "xgboost_tune",
+                        "kknn_tune", "svm_tune",
+                        "nn_tune")))
 
 tictoc::toc()

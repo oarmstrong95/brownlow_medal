@@ -10,12 +10,12 @@ xgboost_recipe <-
   update_role(season, match_id, player_id, new_role = 'id') %>%
   # turn the game outcome into a dummy variables
   step_dummy(game_outcome) %>%
+  # remove any correlated variables
+  step_corr(all_predictors(), -all_nominal()) %>%
   # down sample
   step_nearmiss(brownlow_votes, under_ratio = 1.1, seed = 678) %>%
   # up sample
-  step_bsmote(brownlow_votes, over_ratio = 1, seed = 789) %>%
-  # remove any correlated variables
-  step_corr(all_predictors(), -all_nominal())
+  step_bsmote(brownlow_votes, over_ratio = 1, seed = 789)
 
 # Create a model specification
 xgboost_spec <- 
@@ -42,8 +42,7 @@ xgboost_tune <-
             # pass the bootstrap folds
             resamples = bootstrap_folds,
             # specify the metrics to assess the model on
-            metrics = metric_set(roc_auc, accuracy, sensitivity, 
-                                 specificity),
+            metrics = metric_set(roc_auc, accuracy, sensitivity, specificity),
             # pass the grid space
             grid = 5,
             # save the predictions
