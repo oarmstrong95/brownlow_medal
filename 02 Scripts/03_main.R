@@ -1,6 +1,3 @@
-
-tictoc::tic()
-
 #------------------------------------------------------------------------------
 # GLOBAL INPUT
 #------------------------------------------------------------------------------
@@ -11,29 +8,34 @@ setwd("Z:/My Documents/GitHub/brownlow_medal/02 Scripts")
 #------------------------------------------------------------------------------
 source('00_packages.R')
 source('00_functions.R')
+source('01_model_data.R')
 
 #------------------------------------------------------------------------------
 # GET DATA
 #------------------------------------------------------------------------------
-source('01_model_data.R')
-model_data <- get_data(2017, 2020)
-source('01_resamples.R')
+# Run the function to get entire data set
+output <- get_data(2017, 2020)
+
+# Split the data into previous seasons and new seasons
+model_data <- output[[1]]
+new_data <- output[[2]]
 
 #------------------------------------------------------------------------------
 # RUN MODELS
 #------------------------------------------------------------------------------
-source('02_rf_model.R')
-source('02_xgboost_model.R')
-source('02_kknn_model.R')
-source('02_svm_model.R')
-source('02_nn_model.R')
+source('01_resamples.R')
+source('02_models.R')
+
+# See how the model performs on the test set
+metrics <- out_of_sample_accuracy()
 
 #------------------------------------------------------------------------------
-# CREATE ENSEMBLE
+# GET PREDICTED VOTES
 #------------------------------------------------------------------------------
-# Clear environment
-rm(list=setdiff(ls(), c("ranger_tune", "xgboost_tune",
-                        "kknn_tune", "svm_tune",
-                        "nn_tune")))
+# Fit the final model and predict on the new data
+predicted_votes <- predict_function()
 
-tictoc::toc()
+totals_table()
+
+player_features %>%
+  filter(str_detect(player_name, "Macr"))

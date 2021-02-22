@@ -19,17 +19,21 @@ nn_recipe <-
 
 # Create a model specification
 nn_spec <- 
-  mlp(epochs = 100,
+  mlp(epochs = 20,
       hidden_units = tune(),
       dropout = tune()) %>% 
   set_mode("classification") %>% 
-  set_engine("kernlab")
+  set_engine("keras")
 
 # Create a work flow
 nn_workflow <- 
   workflow() %>% 
   add_recipe(nn_recipe) %>% 
   add_model(nn_spec)
+
+# Set up a grid for the tuning process
+nn_grid <- 
+  grid_latin_hypercube(parameters(nn_spec), size = 25)
 
 # Check the accuracy on the bootstrap samples
 set.seed(141516)
@@ -41,7 +45,16 @@ nn_tune <-
             metrics = 
               metric_set(roc_auc, accuracy, sensitivity, specificity),
             # pass the grid space
-            grid = 25,
+            grid = nn_grid,
             # save the predictions
             control = control_stack_grid()
   )
+
+# Select the best model based on tune parameters
+nn_best <- nn_tune %>% select_best("roc_auc")
+
+# Fit the model on the entire training set to compute out of sample performance
+nn_train_fit <- workflow() %>%
+  add_recipe(nn_recipe) %>%
+  add_model(finalize_model(nn_spec, nn_best)) %>%
+  last_fit(split)

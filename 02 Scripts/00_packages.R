@@ -25,3 +25,6 @@ library(doParallel)
 library(parallel)
 library(themis)
 library(stacks)
+library(gt)
+library(readxl)
+
