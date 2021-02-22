@@ -1,11 +1,54 @@
 #------------------------------------------------------------------------------
-# DEFINE FUNCTIONS
+# NORMALISE DATA
 #------------------------------------------------------------------------------
 # Define function to normalise our numeric variables
 normalise_fun <- function(x){
   return((x-min(x)) / (max(x)-min(x)))
 }
 
+#------------------------------------------------------------------------------
+# PLAYER CLUSTERING
+#------------------------------------------------------------------------------
+# Define function to convert stats into pca vars
+get_pca_vars <- function(input_data, season_input) {
+  
+  # Define receipe
+  pca_rec <- recipe(~., data = input_data) %>%
+    # create id roles for variables not used in the model
+    update_role(player_id, player_name, player_team, new_role = 'id') %>%
+    # use all the remaining vars to reduce dimensionality
+    step_pca(all_predictors())
+  
+  # Get PCA
+  result <- pca_rec %>% prep() %>% juice() %>%
+    mutate(season = season_input)
+  
+  return(result)
+  
+}
+
+# Define function to do K-means clustering (Elbow analysis)
+clustering_fun <- function(data) {
+  
+  subset_data <- data %>% select(PC1:PC5)
+  
+  set.seed(234)
+  # Build a kmeans model
+  model <- kmeans(x = subset_data, centers = 9)
+  
+  # Extract the cluster assignment vector from the kmeans model
+  clust <- model$cluster
+  
+  # Generate the segmented the oes data frame
+  result <- mutate(data, cluster = clust)
+  
+  return(result)
+  
+}
+
+#------------------------------------------------------------------------------
+# HYPER PARAMETER TUNING
+#------------------------------------------------------------------------------
 # Define function to check tuning parameters to optimize the grid search
 # on the second tuning iteration
 tuning_parameters_fun <- function(data){
@@ -37,96 +80,11 @@ roc_curve_fun <- function(data) {
   
 }
 
-# Define function to turn probabilities into votes
-get_votes <- function(data) {
-  
-  n_rows <- new_data %>%
-    distinct(match_id) %>%
-    nrow()
-  
-  votes <- results %>%
-    bind_cols(new_data) %>%
-    select(match_id, player_id, player_name, player_team, .pred_0:.pred_3) %>%
-    mutate(expected_votes = (.pred_0 * 0) + (.pred_1 * 1) + (.pred_2 * 2) + (.pred_3 * 3)) %>%
-    # left_join(player_features, by = c("player_id", "player_name")) %>%
-    # mutate(delta = if_else(is.na(delta), 0, delta),
-    #        match_id = expected_votes + delta,
-    #        match_id = if_else(match_id < 0, 0, match_id)) %>%
-    group_by(match_id) %>%
-    slice_max(order_by = match_id, n = 3, with_ties = FALSE) %>%
-    ungroup() %>%
-    arrange(match_id, desc(match_id)) %>%
-    mutate(predicted_votes = rep(c(3, 2, 1), n_rows))
-  
-  return(votes)
-  
-}
-
-# Define function to convert stats into pca vars
-get_pca_vars <- function(input_data, season_input) {
-  
-  # Define receipe
-  pca_rec <- recipe(~., data = input_data) %>%
-    # create id roles for variables not used in the model
-    update_role(player_id, player_name, player_team, new_role = 'id') %>%
-    # use all the remaining vars to reduce dimensionality
-    step_pca(all_predictors())
-  
-  # Get PCA
-  result <- pca_rec %>% prep() %>% juice() %>%
-    mutate(season = season_input)
-  
-  return(result)
-  
-}
-
-# Define function to do K-means clustering (Elbow analysis)
-clustering_fun <- function(data) {
-  
-  subset_data <- data %>% select(PC1:PC5)
-  
-  # #Use map_dbl to run many models with varying value of k (centers)
-  # tot_withinss <- map_dbl(1:15,  function(k){
-  #  model <- kmeans(x = subset_data,
-  #                  centers = k,
-  #                  iter.max = 50)
-  #  model$tot.withinss
-  # })
-  # 
-  # # Generate a data frame containing both k and tot_withinss
-  # elbow_df <- data.frame(
-  #  k = 1:15,
-  #  tot_withinss = tot_withinss
-  # )
-  # 
-  # # Plot the elbow plot
-  # graph <- ggplot(elbow_df, aes(x = k, y = tot_withinss)) +
-  #  geom_line() +
-  #  scale_x_continuous(breaks = 1:50)
-  
-  set.seed(234)
-  # Build a kmeans model
-  model <- kmeans(x = subset_data, centers = 8)
-  
-  # Extract the cluster assignment vector from the kmeans model
-  clust <- model$cluster
-  
-  # Generate the segmented the oes data frame
-  result <- mutate(data, cluster = clust)
-  
-  return(result)
-  
-}
-
+#------------------------------------------------------------------------------
+# MODEL METRICS
+#------------------------------------------------------------------------------
 # Get accuracy on test set
 out_of_sample_accuracy <- function() {
-  
-  # Select the best hyper parameters
-  # best <- ranger_tune %>%
-  #   collect_metrics() %>%
-  #   filter(.metric == "sens") %>%
-  #   slice_max(order_by = mean, n = 1) %>%
-  #   select(mtry:min_n)
   
   best <- ranger_tune %>%
     select_best("roc_auc")
@@ -152,6 +110,10 @@ out_of_sample_accuracy <- function() {
   
 }
 
+#------------------------------------------------------------------------------
+# TURN PROBABILITIES TO VOTES
+#------------------------------------------------------------------------------
+# Define function to turn probabilities into votes
 # Get final predictions
 predict_function <- function() {
   
@@ -166,13 +128,13 @@ predict_function <- function() {
   
   # Get the actual brownlow votes in history
   actuals <- model_data %>%
-    select(season,match_id, player_id, player_name, player_team, brownlow_votes)
-  
+    select(season, match_id, player_id, player_name, player_team, brownlow_votes)
+
   # Get dimensions to allocate votes from model
-  n_rows <- model_data %>%
+  n_rows_original <- model_data %>%
     distinct(match_id) %>%
     nrow()
-  
+
   # Only add a player error feature for players who have played 3 years
   players <- model_data %>%
     count(season, player_id, player_name) %>%
@@ -181,7 +143,7 @@ predict_function <- function() {
     filter(n == 3) %>%
     ungroup() %>%
     pull(player_id)
-  
+
   # Apply model to entire data set in history
   historical_predictions <- predict(ranger_final_model, new_data = model_data, type = "prob") %>%
     bind_cols(model_data) %>%
@@ -191,9 +153,9 @@ predict_function <- function() {
     slice_max(order_by = expected_votes, n = 3, with_ties = FALSE) %>%
     ungroup() %>%
     arrange(match_id, desc(expected_votes)) %>%
-    mutate(predicted_votes = rep(c(3, 2, 1), n_rows)) %>%
+    mutate(predicted_votes = rep(c(3, 2, 1), n_rows_original)) %>%
     select(season, match_id, player_id, player_name, player_team, predicted_votes)
-  
+
   # Find the players who are in the top 25% of predictions
   relevant_players1 <- historical_predictions %>%
     group_by(player_id, player_name) %>%
@@ -203,7 +165,7 @@ predict_function <- function() {
     mutate(rank = percent_rank(total)) %>%
     filter(rank >= .75) %>%
     pull(player_id)
-  
+
   # Find the players are who are in the top 25% of actual polling
   relevant_players2 <- model_data %>%
     mutate(brownlow_votes = as.numeric(as.character(brownlow_votes))) %>%
@@ -214,7 +176,7 @@ predict_function <- function() {
     mutate(rank = percent_rank(total)) %>%
     filter(rank >= .75) %>%
     pull(player_id)
-  
+
   # Dont down grade elite players
   elite_players <- model_data %>%
     mutate(brownlow_votes = as.numeric(as.character(brownlow_votes))) %>%
@@ -226,10 +188,10 @@ predict_function <- function() {
     head(9) %>%
     select(player_id, player_name) %>%
     mutate(elite_flag = 1)
-  
+
   # Combine relevant players
   relevant_players <- unique(c(relevant_players1, relevant_players2))
-  
+
   # Get player features var
   player_features <- historical_predictions %>%
     right_join(actuals) %>%
@@ -254,19 +216,50 @@ predict_function <- function() {
     left_join(elite_players) %>%
     mutate(drop_flag = if_else(delta < 0 & elite_flag == 1, 1, 0),
            drop_flag = if_else(is.na(drop_flag), 0, drop_flag)) %>%
+    mutate(delta = case_when(
+      player_name == "Gary Ablett" ~ 0,
+      player_name == "Travis Boak" ~ 0,
+      player_name == "Clayton Oliver" ~ 0,
+      player_name == "Jack Steele" ~ 0,
+      player_name == "Max Gawn" ~ 0,
+      player_name == "Taylor Adams" ~ delta*5,
+      player_name == "Zach Merrett" ~ delta*5,
+      player_name == "Josh Kelly" ~ delta*5,
+      player_name == "Jack Macrae" ~ delta*5,
+      TRUE ~ delta)) %>%
     filter(drop_flag != 1) %>%
     filter(delta != 0) %>%
     select(player_id, player_name, delta)
+
+  # Get dimensions
+  n_rows <- new_data %>%
+    distinct(match_id) %>%
+    nrow()
   
   # Get results on new data
   results <- 
     predict(ranger_final_model, new_data = new_data, type = "prob") %>%
-    get_votes()
+    bind_cols(new_data) %>%
+    select(match_id, player_id, player_name, player_team, .pred_0:.pred_3) %>%
+    mutate(expected_votes = (.pred_0 * 0) + (.pred_1 * 1) + (.pred_2 * 2) + (.pred_3 * 3)) %>%
+    left_join(player_features, by = c("player_id", "player_name")) %>%
+    mutate(delta = if_else(is.na(delta), 0, delta),
+           expected_votes = expected_votes + delta,
+           expected_votes = if_else(expected_votes < 0, 0, expected_votes)) %>%
+    group_by(match_id) %>%
+    slice_max(order_by = expected_votes, n = 3, with_ties = FALSE) %>%
+    ungroup() %>%
+    arrange(match_id, desc(expected_votes)) %>%
+    mutate(predicted_votes = rep(c(3, 2, 1), n_rows))
   
   return(results)
   
 }
 
+
+#------------------------------------------------------------------------------
+# CHARTS AND OUTPUTS
+#------------------------------------------------------------------------------
 # Define function to customise aesthics of table
 gt_theme_538 <- function(data,...) {
   data %>%
@@ -360,7 +353,7 @@ totals_table <- function() {
         Team == "Brisbane Lions" ~ "https://upload.wikimedia.org/wikipedia/en/c/c7/Brisbane_Lions_logo_2010.svg",
         TRUE ~ "https://upload.wikimedia.org/wikipedia/en/3/35/Richmond_Tigers_logo.svg")) %>%
       select(`Player Name`, logo, `Team`, `Average Disposals`:`Average Supercoach`, `Total Predicted Votes`) %>%
-      head(20)
+      head(40)
   )
   
   table <- totals %>%

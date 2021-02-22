@@ -14,7 +14,7 @@ source('01_model_data.R')
 # GET DATA
 #------------------------------------------------------------------------------
 # Run the function to get entire data set
-output <- get_data(2017, 2020)
+output <- get_data(MIN_YEAR = 2017, MAX_YEAR = 2020)
 
 # Split the data into previous seasons and new seasons
 model_data <- output[[1]]
@@ -35,7 +35,9 @@ metrics <- out_of_sample_accuracy()
 # Fit the final model and predict on the new data
 predicted_votes <- predict_function()
 
-totals_table()
+#------------------------------------------------------------------------------
+# OUTPUTS
+#------------------------------------------------------------------------------
+top20 <- totals_table()
 
-player_features %>%
-  filter(str_detect(player_name, "Macr"))
+ranger_tune

@@ -1,7 +1,9 @@
 #------------------------------------------------------------------------------
 # DEFINE FUNCTION
 #------------------------------------------------------------------------------
-get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
+get_data <- function(MIN_YEAR = c(2017, NULL),
+                     MAX_YEAR = c(2020, NULL), 
+                     type = c("redownload, import")){
   
   # Error handles
   if(missing(MIN_YEAR)) {
@@ -16,14 +18,26 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
     
   }
   
-  # # If condition to either re run a download or import static file
-  # if(type == "import") {
-  #   
-  #   data <- read.csv()
-  #   
-  #   return(data)
-  #   
-  # }
+  # If condition to either re run a download or import static file
+  if(type == "import") {
+
+    model_data <- 
+      suppressWarnings(
+        read_csv("Z:/My Documents/GitHub/brownlow_medal/01 Data Sets/model_data.csv", 
+                           col_types = cols(X1 = col_skip()))
+      )
+    
+    new_data <- 
+      suppressWarnings(
+        read_csv("Z:/My Documents/GitHub/brownlow_medal/01 Data Sets/new_data.csv", 
+                           col_types = cols(X1 = col_skip()))
+      )
+
+    output <- list(model_data, new_data)
+    
+    return(output)
+
+  }
   
   #------------------------------------------------------------------------------
   # IMPORT DATA
@@ -45,14 +59,14 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
   # Import supercoach data for 2020
   SC_2020 <- suppressWarnings(
     read_csv(paste0("Z:/My Documents/GitHub/brownlow_medal/",
-                    "01 Data Sets/2020_SC.csv"), 
+                    "01 Data Sets/supercoach_2020.csv"), 
              col_types = cols(X1 = col_skip()))
   )
   
   # Import supercoach data for 2020
   AF_2020 <- suppressWarnings(
     read_csv(paste0("Z:/My Documents/GitHub/brownlow_medal/",
-                    "01 Data Sets/2020_AF.csv"),
+                    "01 Data Sets/afl_fantasy_2020.csv"),
              col_types = cols(X1 = col_skip()))
   )
   
@@ -189,7 +203,10 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
               by = c("season", "match_round", "player_name", "player_team")) %>%
     rename(coaches_votes = vote) %>%
     mutate(coaches_votes = replace(coaches_votes, is.na(coaches_votes), 0)) %>%
-    distinct_all()
+    distinct_all() %>%
+    # add in features
+    mutate(kicked_bag = if_else(goals > 5, "Kicked Bag", "No")) %>%
+    mutate(huge_game = if_else(goals >=3 & disposals >= 30, "Huge game", "No"))
   
   # Check for missing
   check2 <- match_data_df %>%
@@ -201,6 +218,44 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
   stopifnot(check2 == 0)
   
   #------------------------------------------------------------------------------
+  # ADD IN EXPERIENCE PER GAME FOR EACH PLAYER
+  #------------------------------------------------------------------------------
+  # Get list of players
+  all_players <- match_data_df %>%
+    filter(between(season, MIN_YEAR, MAX_YEAR)) %>%
+    distinct(player_id, player_name)
+
+  # Get all the data
+  suppressMessages(
+    all_data <- fitzRoy::get_fryzigg_stats() %>%
+    as_tibble() %>%
+    mutate(
+      # create a season variable
+      season = as.character(year(match_date)),
+      # create a player name as a concat of first and last name
+      player_name = paste(player_first_name, player_last_name),
+      # create a player game outcome variable
+      game_outcome = if_else(match_winner == player_team, "Win", "Loss"),
+      game_margin = if_else(player_team == match_home_team, match_margin,
+                            -match_margin))
+  )
+
+  # Create the experience feature
+  suppressWarnings(
+    experience_feature <- all_data %>%
+    right_join(all_players,
+               by = c("player_id", "player_name")) %>%
+    select(season, match_round, match_id, match_date, player_id, player_name) %>%
+    arrange(player_id, player_name, season, match_id, match_round) %>%
+    group_by(player_id, player_name) %>%
+    mutate(num_games = row_number()) %>%
+    ungroup() %>%
+    mutate(season = as.numeric(season),
+           match_round = as.numeric(match_round)) %>%
+    distinct_all()
+  )
+
+  #------------------------------------------------------------------------------
   # FINALISE DATA FOR MODEL
   #------------------------------------------------------------------------------
   # Create a final df for the modelling
@@ -210,15 +265,19 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
            player_id, player_name, player_team, 
            roll_avg, coaches_votes, brownlow_votes,
            everything()) %>%
+    # append in experience feature
+    left_join(experience_feature,
+             by = c("season", "match_round", "match_id", "match_date", "player_id", "player_name")) %>%
     group_by(season, match_round, match_id) %>%
-    mutate_at(vars(kicks:spoils, mean_votes_pg, roll_avg), normalise_fun) %>%
+    # normalise all of the variables
+    mutate_at(vars(kicks:spoils, mean_votes_pg, roll_avg, num_games), normalise_fun) %>%
     ungroup() %>%
-    mutate_at(vars(kicks:spoils), as.numeric) %>%
-    mutate_if(is.numeric, ~replace(., is.nan(.), 0)) #%>%
-  # # normalise by season
-  # group_by(season) %>%
-  # mutate(game_margin = normalise_fun(game_margin)) %>%
-  # ungroup()
+    # ensure vars are numeric and replace NA to 0
+    mutate_at(vars(kicks:spoils, mean_votes_pg, roll_avg, num_games), as.numeric) %>%
+    mutate_if(is.numeric, ~replace(., is.nan(.), 0)) %>%
+    distinct_all() %>%
+    mutate(experience = if_else(num_games > .4, "Experienced", "Inexperienced")) %>%
+    select(-num_games)
   
   # Check for missing
   check3 <- match_data_pre_clust %>%
@@ -238,7 +297,7 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
     select(-c(match_round, match_date, match_home_team,
               match_away_team, game_outcome, game_margin,
               match_id, brownlow_votes, coaches_votes,
-              mean_votes_pg, roll_avg)) %>%
+              mean_votes_pg, roll_avg, experience, huge_game, kicked_bag)) %>%
     group_by(season, player_id, player_name, player_team) %>%
     summarize_if(is.double, mean) %>%
     group_by(season) %>%
@@ -275,14 +334,21 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
   )
   
   #------------------------------------------------------------------------------
+  # GET PLAYER CAPTAINS
+  #------------------------------------------------------------------------------
+  captains <- 
+    read_excel("Z:/My Documents/GitHub/brownlow_medal/01 Data Sets/captains.xlsx")
+  
+  #------------------------------------------------------------------------------
   # FINAL DATASET
   #------------------------------------------------------------------------------
   # Clean and get final total data
   match_data_final <- player_positions %>%
-    # append in cluster
+    # append in player clusters
     left_join(cluster_mapping, by = c("season", "cluster")) %>%
     arrange(season, cluster) %>%
     select(season, player_id, player_name, player_team , cluster = final_id) %>%
+    # append in all data
     right_join(match_data_pre_clust,
                by = c("season", "player_id", "player_name", "player_team")) %>%
     arrange(season, match_round, match_id, player_team, player_id) %>%
@@ -301,6 +367,8 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
       supercoach_score >= .9 & supercoach_score < .95 & coaches_votes < 5 ~ "Pseudo impact",
       supercoach_score >= .95 & supercoach_score < .99 & coaches_votes < 5 ~ "Low impact",
       supercoach_score >= .99 & coaches_votes < 3 ~ "No impact",
+      supercoach_score >= .85 & supercoach_score < .99 & coaches_votes >= 7 ~ "Big impact",
+      supercoach_score >= .99 & coaches_votes >= 8 ~ "Top impact",
       TRUE ~  "Impact Rewarded")) %>%
     select(-c(contest_def_losses, time_on_ground_percentage,
               behinds, bounces, free_kicks_against,
@@ -309,8 +377,11 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
               intercept_marks, contested_marks,
               contest_off_one_on_ones, bookmaker_prob_win)) %>%
     select(!contains("ruck")) %>%
-    select(!contains("hitout"))
-  
+    select(!contains("hitout")) #%>%
+    # left_join(captains,
+    #           by = c("season", "player_name", "player_team")) %>%
+    # mutate(leader = if_else(is.na(leader), "Not Captain", leader))
+
   #------------------------------------------------------------------------------
   # SPLIT FOR MODEL DATA vs NEW DATA
   #------------------------------------------------------------------------------
@@ -328,10 +399,6 @@ get_data <- function(MIN_YEAR, MAX_YEAR, type = c("redownload, import")){
   return(output)
   
 }
-
-
-
-
 
 
 
