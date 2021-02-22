@@ -353,7 +353,7 @@ totals_table <- function() {
         Team == "Brisbane Lions" ~ "https://upload.wikimedia.org/wikipedia/en/c/c7/Brisbane_Lions_logo_2010.svg",
         TRUE ~ "https://upload.wikimedia.org/wikipedia/en/3/35/Richmond_Tigers_logo.svg")) %>%
       select(`Player Name`, logo, `Team`, `Average Disposals`:`Average Supercoach`, `Total Predicted Votes`) %>%
-      head(40)
+      head(25)
   )
   
   table <- totals %>%

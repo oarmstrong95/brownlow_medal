@@ -40,4 +40,3 @@ predicted_votes <- predict_function()
 #------------------------------------------------------------------------------
 top20 <- totals_table()
 
-ranger_tune
