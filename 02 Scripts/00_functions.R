@@ -389,7 +389,109 @@ totals_table <- function() {
   
 }
 
+generate_game_pics <- function(date, header, data) {
+  
+  table <- data %>%
+    gt() %>%
+    text_transform(
+      locations = cells_body(vars(logo)),
+      fn = function(x) {
+        web_image(
+          url = x,
+          height = 25
+        )
+      }
+    ) %>%
+    # Relabel columns
+    cols_label(
+      logo = ""
+    ) %>%
+    data_color(
+      columns = vars(`Predicted Votes`),
+      colors = scales::col_numeric(
+        palette = c("white", "#80df7c"),
+        domain = NULL
+      )
+    ) %>%
+    tab_header(title = md(header),
+               subtitle = html(date)) %>%
+    opt_align_table_header("left") %>%
+    opt_all_caps()  %>%
+    opt_table_font(
+      font = list(
+        google_font("Chivo"),
+        default_fonts()
+      )
+    ) %>%
+    tab_style(
+      style = cell_borders(
+        sides = "bottom", color = "transparent", weight = px(2)
+      ),
+      locations = cells_body(
+        columns = TRUE,
+        # This is a relatively sneaky way of changing the bottom border
+        # Regardless of data size
+        rows = nrow(data$`_data`)
+      )
+    ) %>%
+    tab_options(
+      heading.subtitle.font.size = 10,
+      column_labels.background.color = "white",
+      table.border.top.width = px(3),
+      table.border.top.color = "transparent",
+      table.border.bottom.color = "transparent",
+      table.border.bottom.width = px(3),
+      column_labels.border.top.width = px(3),
+      column_labels.border.top.color = "transparent",
+      column_labels.border.bottom.width = px(3),
+      column_labels.border.bottom.color = "black",
+      data_row.padding = px(3),
+      source_notes.font.size = 12,
+      table.font.size = 16,
+      heading.align = "left"
+    )
+  
+  return(table)
+  
+}
 
-
-
+game_by_game_table <- function() {
+  
+  game_label <- new_data %>%
+    select(match_id, match_date, match_round, match_home_team, match_away_team) %>%
+    distinct_all() %>%
+    mutate(teams = paste0(match_home_team, " vs. ", match_away_team)) %>%
+    select(-match_home_team, -match_away_team) %>%
+    mutate(match_date = paste(wday(match_date, label = TRUE), day(match_date), month(match_date, label = TRUE), year(match_date)))
+  
+  result <- predicted_votes %>%
+    left_join(game_label, by = "match_id") %>%
+    select(match_round, match_date, teams, player_team, "Player Name" = player_name, "Predicted Votes" = predicted_votes) %>%
+    mutate(logo = case_when(
+      player_team == "Melbourne" ~ "https://upload.wikimedia.org/wikipedia/en/4/4e/Melbournefc.svg",
+      player_team == "Port Adelaide" ~ "https://upload.wikimedia.org/wikipedia/en/3/36/Port_Adelaide_Football_Club_logo.svg",
+      player_team == "Western Bulldogs" ~ "https://upload.wikimedia.org/wikipedia/en/0/09/Western_Bulldogs_logo.svg",
+      player_team == "Essendon" ~ "https://upload.wikimedia.org/wikipedia/en/8/8b/Essendon_FC_logo.svg",
+      player_team == "St Kilda" ~ "https://upload.wikimedia.org/wikipedia/en/5/58/St_Kilda_FC_logo.svg",
+      player_team == "Geelong" ~ "https://upload.wikimedia.org/wikipedia/en/5/5f/Geelong_Cats_logo.svg",
+      player_team == "Collingwood" ~ "https://upload.wikimedia.org/wikipedia/en/a/a6/Collingwood_Football_Club_Logo_%282017%E2%80%93present%29.svg",
+      player_team == "Sydney" ~ "https://upload.wikimedia.org/wikipedia/en/a/af/Sydney_Swans_Logo_2020.svg",
+      player_team == "Greater Western Sydney" ~ "https://upload.wikimedia.org/wikipedia/en/0/07/GWS_Giants_logo.svg",
+      player_team == "Hawthorn" ~ "https://upload.wikimedia.org/wikipedia/en/6/62/Hawthorn-football-club-brand.svg",
+      player_team == "Carlton" ~ "https://upload.wikimedia.org/wikipedia/en/5/58/Carlton_FC_Logo_2020.svg",
+      player_team == "Gold Coast" ~ "https://upload.wikimedia.org/wikipedia/en/7/7d/Gold_Coast_Suns_AFL_Logo.svg",
+      player_team == "West Coast" ~ "https://upload.wikimedia.org/wikipedia/en/b/b5/West_Coast_Eagles_logo_2017.svg",
+      player_team == "Fremantle" ~ "https://upload.wikimedia.org/wikipedia/en/c/ca/Fremantle_FC_logo.svg",
+      player_team == "Adelaide" ~ "https://upload.wikimedia.org/wikipedia/en/c/ca/Fremantle_FC_logo.svg",
+      player_team == "North Melbourne" ~ "https://upload.wikimedia.org/wikipedia/en/f/fc/North_Melbourne_FC_logo.svg",
+      player_team == "Brisbane Lions" ~ "https://upload.wikimedia.org/wikipedia/en/c/c7/Brisbane_Lions_logo_2010.svg",
+      TRUE ~ "https://upload.wikimedia.org/wikipedia/en/3/35/Richmond_Tigers_logo.svg")) %>%
+    select(match_round, match_date, teams, logo, `Player Name`, `Predicted Votes`) %>%
+    group_by(match_round, match_date, teams) %>%
+    nest() %>%
+    mutate(table = pmap(list(match_date, teams, data), generate_game_pics))
+  
+  return(result)
+  
+}
 

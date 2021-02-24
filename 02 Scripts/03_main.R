@@ -39,4 +39,4 @@ predicted_votes <- predict_function()
 # OUTPUTS
 #------------------------------------------------------------------------------
 top20 <- totals_table()
-
+gbg <- game_by_game_table()
