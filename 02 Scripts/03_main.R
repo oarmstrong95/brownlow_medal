@@ -47,11 +47,12 @@ predicted_votes <- predict_function()
 #------------------------------------------------------------------------------
 # OUTPUTS
 #------------------------------------------------------------------------------
-top20 <- totals_table()
+top15 <- totals_table()
 gbg <- game_by_game_table()
 
+setwd("Z:/My Documents/GitHub/test_blogdown/content/project/2021-03-07-predicting-charlie/index_cache/html")
 
+rm(list=setdiff(ls(), c("top15", "gbg")))
 
-
-
-
+save.image("Z:/My Documents/GitHub/test_blogdown/content/project/2021-03-07-predicting-charlie/index_cache/html/workspace.RData")
+gbg[[5]][[1]]

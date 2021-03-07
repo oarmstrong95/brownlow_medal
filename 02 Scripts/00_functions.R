@@ -398,7 +398,7 @@ totals_table <- function() {
         Team == "Brisbane Lions" ~ "https://upload.wikimedia.org/wikipedia/en/c/c7/Brisbane_Lions_logo_2010.svg",
         TRUE ~ "https://upload.wikimedia.org/wikipedia/en/3/35/Richmond_Tigers_logo.svg")) %>%
       select(`Player Name`, logo, `Team`, `Average Disposals`:`Average Supercoach`, `Total Predicted Votes`) %>%
-      head(25)
+      head(15)
   )
   
   table <- totals %>%
@@ -408,8 +408,8 @@ totals_table <- function() {
       columns = 4:5
     ) %>%
     tab_header(
-      title = md("Top 20 Brownlow Medal Pollers 2020"),
-      subtitle = md("Predicted votes are added up for each player for each game to give a total across the season")
+      title = md("2020 Brownlow Medal Predictions"),
+      subtitle = md("The top 15 players are shown - their predicted votes have been added up for for each game to give a total across the season")
     ) %>%
     fmt_percent(columns = 4:5,
                 decimals = 0
@@ -422,12 +422,12 @@ totals_table <- function() {
       )
     ) %>%
     tab_source_note(
-      source_note = md("**Data**: fitzroy | **Table:** @oarmstrong95")
+      source_note = md("**Data**: fitzroy | **Table**: @oarmstrong95")
     ) %>%
-    tab_footnote(
-      footnote = "Note: percentile average per game.", 
-      locations = cells_column_labels(columns = 4:5)
-    ) %>%
+    # tab_footnote(
+    #   footnote = "Note: percentile average per game.", 
+    #   locations = cells_column_labels(columns = 4:5)
+    # ) %>%
     gt_theme_538()
   
   return(table)
@@ -443,7 +443,7 @@ generate_game_pics <- function(date, header, data) {
       fn = function(x) {
         web_image(
           url = x,
-          height = 25
+          height = 20
         )
       }
     ) %>%
@@ -492,7 +492,7 @@ generate_game_pics <- function(date, header, data) {
       column_labels.border.bottom.color = "black",
       data_row.padding = px(3),
       source_notes.font.size = 12,
-      table.font.size = 16,
+      table.font.size = 12,
       heading.align = "left"
     )
   
