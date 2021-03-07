@@ -14,16 +14,14 @@ ranger_recipe <-
   recipe(formula = brownlow_votes ~ ., data = model_data) %>%
   # create id roles for variables not used in the model
   step_rm(match_round, match_date, match_home_team,
-          match_away_team, player_team, player_name) %>%
+          match_away_team, player_team, player_name,
+          disposals) %>%
   update_role(season, match_id, player_id, new_role = 'id') %>%
   # turn vars into dummy variables
-  step_dummy(game_outcome, cluster, upset_expected, real_impact_proxy,
-             experience, kicked_bag, huge_game) %>%
-  # remove any correlated variables
-  step_corr(all_predictors(), -all_nominal()) %>%
+  step_dummy(game_outcome, cluster) %>%
   # down sample
   step_nearmiss(brownlow_votes, under_ratio = 1, seed = 345)
-
+  
 # Create a model specification
 ranger_spec <- 
   rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
@@ -40,11 +38,11 @@ ranger_workflow <-
 rf_grid <- grid_regular(
   # The number of predictors that will be randomly sampled at
   # each split when creating the tree models.
-  mtry(range = c(10, 15)),
+  mtry(range = c(10, 39)),
   # The minimum number of data points in a node that are
   # required for the node to be split further
-  min_n(range = c(5, 15)),
-  levels = 3
+  min_n(range = c(3, 7)),
+  levels = 10
 )
 
 # Check the accuracy on the bootstrap samples to tune hyper parameters
@@ -57,5 +55,6 @@ ranger_tune <-
             metrics = 
               metric_set(roc_auc, accuracy, sensitivity, specificity),
             # pass the grid space
-            grid = rf_grid
-  )
+            grid = rf_grid,
+            control = control_resamples(save_pred = TRUE)
+            )

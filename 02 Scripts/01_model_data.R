@@ -53,6 +53,7 @@ get_data <- function(MIN_YEAR = c(2017, NULL),
       player_name = paste(player_first_name, player_last_name),
       # create a player game outcome variable
       game_outcome = if_else(match_winner == player_team, "Win", "Loss"),
+      # calc the game margin
       game_margin = if_else(player_team == match_home_team, match_margin,
                             -match_margin))
   
@@ -203,10 +204,7 @@ get_data <- function(MIN_YEAR = c(2017, NULL),
               by = c("season", "match_round", "player_name", "player_team")) %>%
     rename(coaches_votes = vote) %>%
     mutate(coaches_votes = replace(coaches_votes, is.na(coaches_votes), 0)) %>%
-    distinct_all() %>%
-    # add in features
-    mutate(kicked_bag = if_else(goals > 5, "Kicked Bag", "No")) %>%
-    mutate(huge_game = if_else(goals >=3 & disposals >= 30, "Huge game", "No"))
+    distinct_all()
   
   # Check for missing
   check2 <- match_data_df %>%
@@ -260,24 +258,32 @@ get_data <- function(MIN_YEAR = c(2017, NULL),
   #------------------------------------------------------------------------------
   # Create a final df for the modelling
   match_data_pre_clust <- match_data_df %>%
+    # append in experience feature
+    left_join(experience_feature,
+              by = c("season", "match_round", "match_id", "match_date", "player_id", "player_name")) %>%
+    # re order vars
     select(season, match_round, match_id, match_date, match_home_team,
            match_away_team, game_outcome, game_margin,
            player_id, player_name, player_team, 
-           roll_avg, coaches_votes, brownlow_votes,
+           roll_avg, mean_votes_pg, coaches_votes, brownlow_votes, num_games,
            everything()) %>%
-    # append in experience feature
-    left_join(experience_feature,
-             by = c("season", "match_round", "match_id", "match_date", "player_id", "player_name")) %>%
-    group_by(season, match_round, match_id) %>%
     # normalise all of the variables
     mutate_at(vars(kicks:spoils, mean_votes_pg, roll_avg, num_games), normalise_fun) %>%
     ungroup() %>%
+    # create features
+    mutate(diff_sc_cc = abs(supercoach_score - coaches_votes),
+           dif_afl_cc = abs(afl_fantasy_score - coaches_votes),
+           goals_and_disp = disposals + goals) %>%
+    # normalise features
+    mutate_at(vars(diff_sc_cc, dif_afl_cc, goals_and_disp), normalise_fun) %>%
+    # normalise game margin by season
+    group_by(season) %>%
+    mutate_at(vars(game_margin), normalise_fun) %>%
+    ungroup() %>%
     # ensure vars are numeric and replace NA to 0
-    mutate_at(vars(kicks:spoils, mean_votes_pg, roll_avg, num_games), as.numeric) %>%
+    mutate_at(vars(num_games:goals_and_disp, game_margin), as.numeric) %>%
     mutate_if(is.numeric, ~replace(., is.nan(.), 0)) %>%
-    distinct_all() %>%
-    mutate(experience = if_else(num_games > .4, "Experienced", "Inexperienced")) %>%
-    select(-num_games)
+    distinct_all()
   
   # Check for missing
   check3 <- match_data_pre_clust %>%
@@ -297,7 +303,8 @@ get_data <- function(MIN_YEAR = c(2017, NULL),
     select(-c(match_round, match_date, match_home_team,
               match_away_team, game_outcome, game_margin,
               match_id, brownlow_votes, coaches_votes,
-              mean_votes_pg, roll_avg, experience, huge_game, kicked_bag)) %>%
+              mean_votes_pg, roll_avg, num_games, diff_sc_cc, dif_afl_cc,
+              goals_and_disp)) %>%
     group_by(season, player_id, player_name, player_team) %>%
     summarize_if(is.double, mean) %>%
     group_by(season) %>%
@@ -352,36 +359,20 @@ get_data <- function(MIN_YEAR = c(2017, NULL),
     right_join(match_data_pre_clust,
                by = c("season", "player_id", "player_name", "player_team")) %>%
     arrange(season, match_round, match_id, player_team, player_id) %>%
-    # append in probabilities
-    left_join(game_probabilties,
-              by = c("season", "player_team", "match_round", "match_date")) %>%
-    mutate(upset_expected = case_when(
-      game_outcome == "Win" & bookmaker_prob_win <= 0.5 & bookmaker_prob_win > 0.25 ~ "Upset_Win",
-      game_outcome == "Win" & bookmaker_prob_win <= 0.25 ~ "Big_upset_Win",
-      game_outcome == "Loss" & bookmaker_prob_win >= 0.5 ~ "Upset_Loss",
-      game_outcome == "Win" & bookmaker_prob_win > 0.5 ~ "Expected_Win",
-      game_outcome == "Loss" & bookmaker_prob_win < 0.5 ~ "Expected_Loss")) %>%
-    mutate(real_impact_proxy = case_when(
-      supercoach_score >= .70 & supercoach_score < .85 & coaches_votes < 5 ~ "Moderate impact",
-      supercoach_score >= .85 & supercoach_score < .9 & coaches_votes < 5 ~ "Some impact",
-      supercoach_score >= .9 & supercoach_score < .95 & coaches_votes < 5 ~ "Pseudo impact",
-      supercoach_score >= .95 & supercoach_score < .99 & coaches_votes < 5 ~ "Low impact",
-      supercoach_score >= .99 & coaches_votes < 3 ~ "No impact",
-      supercoach_score >= .85 & supercoach_score < .99 & coaches_votes >= 7 ~ "Big impact",
-      supercoach_score >= .99 & coaches_votes >= 8 ~ "Top impact",
-      TRUE ~  "Impact Rewarded")) %>%
     select(-c(contest_def_losses, time_on_ground_percentage,
               behinds, bounces, free_kicks_against,
               free_kicks_for, tackles_inside_fifty,
-              disposal_efficiency_percentage, 
+              disposal_efficiency_percentage,
               intercept_marks, contested_marks,
-              contest_off_one_on_ones, bookmaker_prob_win)) %>%
+              contest_off_one_on_ones, contest_def_one_on_ones,
+              spoils, one_percenters, rebounds, intercepts,
+              def_half_pressure_acts, contest_off_wins, marks_on_lead,
+              goal_assists, f50_ground_ball_gets, goals, handballs,
+              marks_inside_fifty, centre_clearances,
+              score_launches)) %>%
     select(!contains("ruck")) %>%
-    select(!contains("hitout")) #%>%
-    # left_join(captains,
-    #           by = c("season", "player_name", "player_team")) %>%
-    # mutate(leader = if_else(is.na(leader), "Not Captain", leader))
-
+    select(!contains("hitout"))
+  
   #------------------------------------------------------------------------------
   # SPLIT FOR MODEL DATA vs NEW DATA
   #------------------------------------------------------------------------------
@@ -399,6 +390,3 @@ get_data <- function(MIN_YEAR = c(2017, NULL),
   return(output)
   
 }
-
-
-

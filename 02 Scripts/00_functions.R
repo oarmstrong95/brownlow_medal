@@ -51,9 +51,16 @@ clustering_fun <- function(data) {
 #------------------------------------------------------------------------------
 # Define function to check tuning parameters to optimize the grid search
 # on the second tuning iteration
-tuning_parameters_fun <- function(data){
+tuning_parameters_fun <- function(){
   
-  graph <- data %>%
+  graph <- ranger_tune %>%
+    collect_metrics() %>%
+    filter(.metric == "roc_auc") %>%
+    select(mean, min_n, mtry) %>%
+    pivot_longer(min_n:mtry,
+                 values_to = "value",
+                 names_to = "parameter"
+    ) %>%
     ggplot(aes(value, mean, color = parameter)) +
     geom_point(show.legend = FALSE) +
     facet_wrap(~parameter, scales = "free_x") +
@@ -77,6 +84,26 @@ roc_curve_fun <- function(data) {
     coord_equal()
   
   return(curve)
+  
+}
+
+#------------------------------------------------------------------------------
+# CHECK VARIABLE IMPORTANCE
+#------------------------------------------------------------------------------
+var_importance <- function() {
+  
+  best <- ranger_tune %>%
+    select_best("roc_auc")
+  
+  data_vip <- ranger_recipe %>% prep() %>% juice()
+  
+  graph <- finalize_model(ranger_spec, best) %>%
+    set_engine("ranger", importance = "permutation") %>%
+    fit(brownlow_votes ~ .,
+        data = data_vip) %>%
+    vip(geom = "point")
+  
+  return(graph)
   
 }
 
@@ -107,6 +134,24 @@ out_of_sample_accuracy <- function() {
   metrics <- list(metrics, roc_curve)
   
   return(metrics)
+  
+}
+
+#------------------------------------------------------------------------------
+# GENERATE BOXPLOT
+#------------------------------------------------------------------------------
+generate_boxplot <- function() {
+  
+  boxplot <- model_data %>%
+    select(game_margin:bookmaker_prob_win) %>%
+    pivot_longer(!brownlow_votes, 
+                 names_to = "vars",
+                 values_to = "values") %>%
+    ggplot(aes(x = brownlow_votes, y = values)) + 
+    geom_boxplot() +
+    facet_wrap(~vars, scales = "free_y")
+  
+  return(boxplot)
   
 }
 
@@ -216,17 +261,17 @@ predict_function <- function() {
     left_join(elite_players) %>%
     mutate(drop_flag = if_else(delta < 0 & elite_flag == 1, 1, 0),
            drop_flag = if_else(is.na(drop_flag), 0, drop_flag)) %>%
-    mutate(delta = case_when(
-      player_name == "Gary Ablett" ~ 0,
-      player_name == "Travis Boak" ~ 0,
-      player_name == "Clayton Oliver" ~ 0,
-      player_name == "Jack Steele" ~ 0,
-      player_name == "Max Gawn" ~ 0,
-      player_name == "Taylor Adams" ~ delta*5,
-      player_name == "Zach Merrett" ~ delta*5,
-      player_name == "Josh Kelly" ~ delta*5,
-      player_name == "Jack Macrae" ~ delta*5,
-      TRUE ~ delta)) %>%
+    # mutate(delta = case_when(
+      # player_name == "Gary Ablett" ~ 0,
+      # player_name == "Travis Boak" ~ 0,
+      # player_name == "Clayton Oliver" ~ 0,
+      # player_name == "Jack Steele" ~ 0,
+      # player_name == "Max Gawn" ~ 0,
+      # player_name == "Taylor Adams" ~ delta*5,
+      # player_name == "Zach Merrett" ~ delta*5,
+      # player_name == "Josh Kelly" ~ delta*5,
+      # player_name == "Jack Macrae" ~ delta*5,
+      # TRUE ~ delta)) %>%
     filter(drop_flag != 1) %>%
     filter(delta != 0) %>%
     select(player_id, player_name, delta)
